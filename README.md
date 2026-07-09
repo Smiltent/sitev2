@@ -1,15 +1,6 @@
-# sitev2
-
-To install dependencies:
-
-```bash
-bun install
+# smilt.dev v2
+# running
+pls install bun, then do:
+```sh
+bun run start
 ```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.2.20. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
