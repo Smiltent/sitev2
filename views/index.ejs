@@ -30,28 +30,51 @@
 
 <div class="main">
     <div class="m-left">
-        <div class="box m-l-stats">
-            <p>stats</p>
+        <div class="box m-l-stats gray-bg">
+            <div class="box-header">
+                <h1><i class="fa-solid fa-chart-line fa-sm"></i> stats</h1>
+            </div>
             <div class="m-l-stats-container">
-                <p>views: 234</p>
-                <p>posts: 5678</p>
-                <p>ips banned: 123</p>
+                <p>views: <b>234</b></p>
+                <p>posts: <b>1</b></p>
+                <p>ips banned: <b>12</b></p>
+            </div>
+        </div>
+
+        <div class="box m-l-discord gray-bg">
+            <div class="box-header">
+                <h1><i class="fa-brands fa-discord fa-sm"></i> discord</h1>
+            </div>
+            <div class="m-l-discord-container">
+                <img class="m-l-d-img" src="/public/img/pfp.png" alt="Discord Profile Picture">
+                <p class="m-l-d-desc"><span id="discordUsername">getting...</span><span id="discordStatus">getting...</span></p>
+            </div>
+        </div>
+
+        <div class="box m-l-spotify gray-bg">
+            <div class="box-header">
+                <h1><i class="fa-brands fa-spotify fa-sm"></i> spotify</h1>
+            </div>
+            <div class="m-l-spotify-container">
+                <img class="m-l-s-img" id="spotifyImg" src="/public/img/disc.png" alt="Spotify Image Picture">
+                <p class="m-l-s-desc"><span id="spotifySong">getting...</span><span id="spotifyArtist">getting...</span></p>
             </div>
         </div>
     </div>
     <div class="m-right">
         <div class="m-r-nav">
-            <div class="box">whoami/</div>
-            <div class="box">blog/</div>
-            <div class="box">projects/</div>
-            <div class="box">guestbook/</div>
+            <div class="box clickable">whoami/</div>
+            <div class="box clickable">blog/</div>
+            <div class="box clickable">projects/</div>
+            <div class="box clickable">guestbook/</div>
         </div>
     </div>
 </div>
 
-<!-- <div class="footer">
+<div class="footer">
     <p>smil copyright 2026   <a href="<%= gitUrl %>">sitev2@<%= gitHash %></a></p>
-</div> -->
+</div>
 
-<script src="/public/js/birthday.js"></script>
-<script src="/public/js/scrolling88x31.js"></script>
+<script type="module" src="/public/js/status.js"></script>
+<script type="module" src="/public/js/scrolling88x31.js"></script>
+<script type="module" src="/public/js/birthday.js"></script>

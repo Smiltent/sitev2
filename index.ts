@@ -19,6 +19,7 @@ await Bun.build({
     entrypoints: entries,
     outdir: './public/js',
     target: 'browser',
+    env: "inline",
     minify: true
 })
 

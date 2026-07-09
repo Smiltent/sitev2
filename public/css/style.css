@@ -1,25 +1,65 @@
 
+/* mix of latte and frappe catpuccin */
+:root {
+    --base: #303446;
+    --mantle: #292c3c;
+    --crust: #232634;
+    --text: #4c4f69;
+    --subtext: #6c6f85;
+    --surface0: #414559;
+    --surface1: #51576d;
+    --overlay: #a5adce;
+    --blue: #8caaee;
+    --green: #a6d189;
+    --red: #e78284;
+    --mauve: #ca9ee6;
+    --peach: #ef9f76;
+    --yellow: #e5c890;
+    --sky: #99d1db;
+}
+
 * {
     padding: 0;
     margin: 0;
 
     font-family: Rubik, sans-serif;
-}z
+}
+
+/* util */
+.gray-bg { background-color: var(--overlay) }
+.clickable { cursor: pointer; }
 
 body {
     margin: auto;
     width: 900px;
+    background-color: rgb(224, 227, 235);
 
     padding: 1rem 0;
 }
 
-/* util */
 .box {
     border-radius: 5px;
-    background-color: orange;
     padding: 0.85rem;
 
     font-weight: 500;
+    transition: font-size 0.08s ease;
+}
+
+.box-header {
+    padding: 0 0 0.4rem;
+}
+
+.box, .box h1 {
+    font-size: 18px
+}
+
+.box:hover {
+    font-size: 20px;
+}
+
+.box p {
+    font-size: 16px;
+    font-weight: 400;
 }
 
 /* 88x31s (little icons that scroll) */
@@ -41,10 +81,6 @@ body {
 }
 
 /* header */
-.header {
-
-}
-
 .header .h-main h1 {
     font-family: Notable, sans-serif;
 
@@ -60,9 +96,13 @@ body {
 }
 
 .main > * {
-    padding: 0.5rem
+    padding: 0.25rem;
+    gap: 5px;
 }
 
+/*        */
+/** left **/
+/*        */
 .main .m-left {
     display: flex;
     flex-direction: column;
@@ -70,6 +110,47 @@ body {
     flex: 0 0 25%;
 }
 
+/* left - spotify */
+.main .m-left .m-l-spotify .m-l-spotify-container,
+.main .m-left .m-l-discord .m-l-discord-container  {
+    display: flex;
+    flex-direction: row;
+
+    gap: 7px;
+}
+
+.main .m-left .m-l-spotify .m-l-s-img,
+.main .m-left .m-l-discord .m-l-d-img {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 5px;
+}
+
+.main .m-left .m-l-spotify .m-l-s-desc #spotifySong,
+.main .m-left .m-l-discord .m-l-d-desc #discordUsername {
+    font-weight: 500;
+}
+
+.main .m-left .m-l-spotify .m-l-s-desc #spotifyArtist,
+.main .m-left .m-l-discord .m-l-d-desc #discordStatus {
+    font-size: 12px;
+}
+
+.main .m-left .m-l-spotify .m-l-s-desc #spotifySong,
+.main .m-left .m-l-discord .m-l-d-desc #discordUsername,
+.main .m-left .m-l-spotify .m-l-s-desc #spotifyArtist,
+.main .m-left .m-l-discord .m-l-d-desc #discordStatus {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 8rem;
+}
+
+/*         */
+/** right **/
+/*         */
 .main .m-right { 
     flex: 1
 }
@@ -85,7 +166,7 @@ body {
         'd d d c c c';
 }
 
-.main .m-right .m-r-nav > div:nth-child(1) { grid-area: a; }
-.main .m-right .m-r-nav > div:nth-child(2) { grid-area: b; }
-.main .m-right .m-r-nav > div:nth-child(3) { grid-area: c; }
-.main .m-right .m-r-nav > div:nth-child(4) { grid-area: d; }
+.main .m-right .m-r-nav > div:nth-child(1) { grid-area: a; background-color: var(--mauve); }
+.main .m-right .m-r-nav > div:nth-child(2) { grid-area: b; background-color: var(--red); }
+.main .m-right .m-r-nav > div:nth-child(3) { grid-area: c; background-color: var(--peach); }
+.main .m-right .m-r-nav > div:nth-child(4) { grid-area: d; background-color: var(--blue); }
