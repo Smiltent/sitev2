@@ -1,6 +1,6 @@
-import type { NextFunction, Request, Response } from "express";
-import getRealIP from "../utils/ip";
-import Bots from "../models/Bots";
+import type { NextFunction, Request, Response } from "express"
+import getRealIP from "../utils/ip"
+import Bots from "../models/Bots"
 
 // handles blocking bots (on the frontend) and logging requests (only if the server has debug enabled)
 export default async function root(req: Request, res: Response, next: NextFunction) {
@@ -13,6 +13,9 @@ export default async function root(req: Request, res: Response, next: NextFuncti
         }
     } 
 
+    res.on("finish", () => {
+        console.debug(`${ip} | ${req.method} ${res.statusCode} ${req.originalUrl}`)
+    })
+
     next()
-    console.debug(`${ip} | ${req.method} ${res.statusCode} ${req.originalUrl}`)
 }
