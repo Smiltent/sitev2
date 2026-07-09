@@ -3,14 +3,18 @@ import migrations from "../utils/migrations"
 import mongoose from "mongoose"
 
 export default class Database {
-    constructor(private uri: string) {
-        this.connect()
+    public ready: Promise<void>
+
+    constructor(private uri: string = process.env.MONGO_CONNECTION!) {
+        this.ready = this.connect()
     }
 
     private async connect() {
         try {
             console.debug("Connecting to Database...")
-            await mongoose.connect(this.uri)
+            await mongoose.connect(this.uri, {
+                maxPoolSize: 20
+            })
             await migrations()
 
             console.info("Connected to Database!")
