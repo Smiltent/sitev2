@@ -1,0 +1,91 @@
+
+* {
+    padding: 0;
+    margin: 0;
+
+    font-family: Rubik, sans-serif;
+}z
+
+body {
+    margin: auto;
+    width: 900px;
+
+    padding: 1rem 0;
+}
+
+/* util */
+.box {
+    border-radius: 5px;
+    background-color: orange;
+    padding: 0.85rem;
+
+    font-weight: 500;
+}
+
+/* 88x31s (little icons that scroll) */
+.eighty8x31s-wrap {
+    width: 100%;
+    overflow: hidden;
+    height: 31px;
+}
+
+.eighty8x31s {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+}
+
+.eighty8x31s * {
+    padding: 0 3px;
+    flex-shrink: 0;
+}
+
+/* header */
+.header {
+
+}
+
+.header .h-main h1 {
+    font-family: Notable, sans-serif;
+
+    font-size: 5rem
+}
+
+/* main */
+.main {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+}
+
+.main > * {
+    padding: 0.5rem
+}
+
+.main .m-left {
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 0 25%;
+}
+
+.main .m-right { 
+    flex: 1
+}
+
+.main .m-right .m-r-nav {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        'a a a b b b'
+        'a a a c c c'
+        'd d d c c c';
+}
+
+.main .m-right .m-r-nav > div:nth-child(1) { grid-area: a; }
+.main .m-right .m-r-nav > div:nth-child(2) { grid-area: b; }
+.main .m-right .m-r-nav > div:nth-child(3) { grid-area: c; }
+.main .m-right .m-r-nav > div:nth-child(4) { grid-area: d; }
