@@ -1,5 +1,4 @@
 
-import getCounts from "@/utils/data"
 import getRealIP from "@/utils/ip"
 import Bots from "@/models/Bots"
 
@@ -7,10 +6,7 @@ import { Router } from "express"
 const router = Router()
 
 router.get("/", async (req, res) => {
-    res.render("index", { 
-        state: req.app.locals.live?.state ?? null,
-        counts: await getCounts()
-    })
+    res.render("index")
 })
 
 router.get("/_admin/env/index.html", async (req, res) => {

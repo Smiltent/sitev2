@@ -1,4 +1,6 @@
+
 import type { NextFunction, Request, Response } from "express"
+import getCounts from "@/utils/data"
 import getRealIP from "../utils/ip"
 import Bots from "../models/Bots"
 
@@ -12,6 +14,9 @@ export default async function root(req: Request, res: Response, next: NextFuncti
             return res.send(`You've been blocked! Email ${process.env.EMAIL} for an unblock.`)
         }
     } 
+
+    res.locals.state = req.app.locals.live?.state ?? null
+    res.locals.counts = await getCounts().catch(() => ({ posts: 0, bots: 0 }))
 
     res.on("finish", () => {
         console.debug(`${ip} | ${req.method} ${res.statusCode} ${req.originalUrl}`)
