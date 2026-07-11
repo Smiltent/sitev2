@@ -24,7 +24,7 @@ function parse(filename: string): Post | null {
 
     const raw = fs.readFileSync(path.join(dir, filename), "utf8")
     const heading = raw.match(/^#\s+(.+)$/m)
-    const title = heading?.[1]?.trim() ?? name.replaceAll("-", "")
+    const title = heading?.[1]?.trim() ?? name.replaceAll("-", " ")
 
     return {
         slug: filename.slice(0, -3),
