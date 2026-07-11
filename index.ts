@@ -24,8 +24,6 @@ await Bun.build({
 })
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-require('dotenv').config()
-
 import log from './utils/log.ts'
 log(debug)
 

@@ -34,6 +34,7 @@ export default class Express {
         const git = await getGitInfo()
         this.app.locals.gitHash = git.hash
         this.app.locals.gitUrl = git.url
+        this.app.locals.dev = process.env.NODE_ENV === "dev" ? true : false
 
         this.app.use(rootMiddleware)
     }

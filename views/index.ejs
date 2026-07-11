@@ -1,4 +1,10 @@
 
+<% if (dev) { %>
+    <div class="dev-mode-class-thing-so-it-doesnt-overlap-anything warning-tape">
+        <p>WEBSITE UNDER DEV MODE! PLEASE PROCEED WITH CAUTION! (theres no caution lol)</p>
+    </div>
+<% } %>
+
 <div class="eighty8x31s-wrap">
     <div class="eighty8x31s">
         <a href="#clicked">
@@ -22,9 +28,10 @@
 </div>
 
 <div class="header">
-    <div class="h-main">
-        <h1>smil</h1>
-        <p><span id="birth">18.00000000</span> years old</p>
+    <div class="box h-main gray-bg">
+        <p id="h-deco-a"><span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span></p>
+        <h1>smil's website</h1>
+        <p id="h-deco-b"><span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span></p>
     </div>
 </div>
 
@@ -46,8 +53,11 @@
                 <h1><i class="fa-brands fa-discord fa-sm"></i> discord</h1>
             </div>
             <div class="m-l-discord-container">
-                <img class="m-l-d-img" src="/public/img/pfp.png" alt="Discord Profile Picture">
-                <p class="m-l-d-desc"><span id="discordUsername">getting...</span><span id="discordStatus">getting...</span></p>
+                <div class="m-l-d-avatar">
+                    <img class="m-l-d-img" src="/public/img/pfp.png" alt="Discord Profile Picture">
+                    <span class="m-l-d-status" id="discordStatusDot" data-status="offline"></span>
+                </div>
+                <p class="m-l-d-desc"><span id="discordUsername">smiltene</span><span id="discordStatus">...</span></p>
             </div>
         </div>
 
@@ -55,11 +65,41 @@
             <div class="box-header">
                 <h1><i class="fa-brands fa-spotify fa-sm"></i> spotify</h1>
             </div>
-            <div class="m-l-spotify-container">
+            <div class="m-l-spotify-container" data-hasurl="0">
                 <img class="m-l-s-img" id="spotifyImg" src="/public/img/disc.png" alt="Spotify Image Picture">
-                <p class="m-l-s-desc"><span id="spotifySong">getting...</span><span id="spotifyArtist">getting...</span></p>
+                <p class="m-l-s-desc"><span id="spotifySong">Listening to</span><span id="spotifyArtist">Nothing</span></p>
             </div>
         </div>
+
+        <div class="box m-l-steam gray-bg">
+            <div class="box-header">
+                <h1><i class="fa-brands fa-steam fa-sm"></i> steam</h1>
+            </div>
+            <div class="m-l-steam-container">
+                
+            </div>
+        </div>
+
+        <div class="box m-l-steam gray-bg">
+            <div class="box-header">
+                <h1><i class="fa-solid fa-code-branch fa-sm"></i> time spent coding</h1>
+            </div>
+            <div class="m-l-steam-container">
+
+            </div>
+        </div>
+
+        <!-- <div class="box m-l-status gray-bg">
+            <div class="box-header">
+                <h1><i class="fa-solid fa-bars-progress fa-sm"></i></i> status</h1>
+            </div>
+            <div class="m-l-status-container">
+                <p><span id="" style="color: var(--dgreen)">⬤</span> peanut</p>
+                <p><span id="" style="color: var(--dred)">⬤</span> jelly</p>
+                <p><span id="">⬤</span> jam</p>
+                <p><span id="">⬤</span> forge</p>
+            </div>
+        </div> -->
     </div>
     <div class="m-right">
         <div class="m-r-nav">
@@ -68,6 +108,7 @@
             <div class="box clickable">projects/</div>
             <div class="box clickable">guestbook/</div>
         </div>
+        <div class="m-r-big box clickable gray-bg">tools/</div>
     </div>
 </div>
 
@@ -77,4 +118,4 @@
 
 <script type="module" src="/public/js/status.js"></script>
 <script type="module" src="/public/js/scrolling88x31.js"></script>
-<script type="module" src="/public/js/birthday.js"></script>
+<script type="module" src="/public/js/sparkle.js"></script>
