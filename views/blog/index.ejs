@@ -1,0 +1,5 @@
+<% for (const p of posts) { %>
+    <a href="/blog/<%= p.slug %>">
+        <%= p.title %> - <%= p.date %>
+    </a>
+<% } %>

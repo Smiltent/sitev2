@@ -1,24 +1,19 @@
 
+import { getPost, getPosts } from "@/utils/blog"
+
 import { Router } from "express"
-import Posts from "../models/Posts"
 const router = Router()
 
 router.get("/", async (req, res) => {
-    const posts = await Posts.find({})
-
-    const formated = posts.map(p => ({
-        id: p._id,
-        title: p.title
-    }))
-
-    res.render("blog/index", { formated })
+    res.render("blog/index", { posts: getPosts() })
 })
 
-router.get("/view", async (req, res) => {
-    const { id } = req.query
-    if (!id) return res.status(404).render("404")
+router.get("/:slug", async (req, res) => {
+    const { slug } = req.params
+    
+    const post = getPost(slug)
+    if (!post) return res.status(404).render("404")
 
-    const post = await Posts.find({ _id: id })
     res.render("blog/view", { post })
 })
 
