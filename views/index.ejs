@@ -42,9 +42,9 @@
                 <h1><i class="fa-solid fa-chart-line fa-sm"></i> stats</h1>
             </div>
             <div class="m-l-stats-container">
-                <p>views: <b>234</b></p>
-                <p>posts: <b>1</b></p>
-                <p>ips banned: <b>12</b></p>
+                <p><b>views:</b> 234</p>
+                <p><b>posts:</b> 1</p>
+                <p><b>ips banned:</b> 12</p>
             </div>
         </div>
 
@@ -55,9 +55,9 @@
             <div class="m-l-discord-container">
                 <div class="m-l-d-avatar">
                     <img class="m-l-d-img" src="/public/img/pfp.png" alt="Discord Profile Picture">
-                    <span class="m-l-d-status" id="discordStatusDot" data-status="offline"></span>
+                    <span class="m-l-d-status" id="discordStatusDot" data-status="<%= state?.discord?.status ?? "offline" %>"></span>
                 </div>
-                <p class="m-l-d-desc"><span id="discordUsername">smiltene</span><span id="discordStatus">...</span></p>
+                <p class="m-l-d-desc"><span id="discordUsername">smiltene</span><span id="discordStatus"><%= state?.discord?.custom ?? "..." %></span></p>
             </div>
         </div>
 
@@ -66,26 +66,18 @@
                 <h1><i class="fa-brands fa-spotify fa-sm"></i> spotify</h1>
             </div>
             <div class="m-l-spotify-container" data-hasurl="0">
-                <img class="m-l-s-img" id="spotifyImg" src="/public/img/disc.png" alt="Spotify Image Picture">
-                <p class="m-l-s-desc"><span id="spotifySong">Listening to</span><span id="spotifyArtist">Nothing</span></p>
+                <img class="m-l-s-img" id="spotifyImg" src="<%= state?.spotify?.art ?? "/public/img/disc.png" %>" alt="Spotify Image Picture">
+                <p class="m-l-s-desc"><span id="spotifySong"><%= state?.spotify?.song ?? "Listening to" %></span><span id="spotifyArtist"><%= state?.spotify?.artist ?? "nothing" %></span></p>
             </div>
         </div>
 
-        <div class="box m-l-steam gray-bg">
-            <div class="box-header">
-                <h1><i class="fa-brands fa-steam fa-sm"></i> steam</h1>
-            </div>
-            <div class="m-l-steam-container">
-                
-            </div>
-        </div>
-
-        <div class="box m-l-steam gray-bg">
+        <div class="box m-l-coding gray-bg">
             <div class="box-header">
                 <h1><i class="fa-solid fa-code-branch fa-sm"></i> time spent coding</h1>
             </div>
-            <div class="m-l-steam-container">
-
+            <div class="m-l-coding-container">
+                <p><b>all time:</b> <span id="codingAllTime"><%= state?.coding?.allTime ?? "0 hrs" %></span></p>
+                <p><b>today:</b> <span id="codingToday"><%= state?.coding?.today ?? "0m / 0m goal" %></span></p>
             </div>
         </div>
 
@@ -116,6 +108,6 @@
     <p>smil copyright 2026   <a href="<%= gitUrl %>">sitev2@<%= gitHash %></a></p>
 </div>
 
-<script type="module" src="/public/js/status.js"></script>
-<script type="module" src="/public/js/scrolling88x31.js"></script>
+<script type="module" src="/public/js/ws.js"></script>
 <script type="module" src="/public/js/sparkle.js"></script>
+<script type="module" src="/public/js/scrolling88x31.js"></script>

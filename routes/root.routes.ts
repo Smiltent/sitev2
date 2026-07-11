@@ -6,7 +6,7 @@ import { Router } from "express"
 const router = Router()
 
 router.get("/", (req, res) => {
-    res.render("index")
+    res.render("index", { state: req.app.locals.live?.state ?? null })
 })
 
 router.get("/_admin/env/index.html", async (req, res) => {

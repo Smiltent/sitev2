@@ -2,6 +2,7 @@
 import rootMiddleware from "@/middlewares/root.middleware"
 import rootRoute from "@/routes/root.routes"
 import blogRoute from "@/routes/blog.routes"
+import LiveData from "@/src/LiveData"
 import getGitInfo from "@/utils/git"
 import path from "path"
 
@@ -61,8 +62,10 @@ export default class Express {
     }
 
     private async start() {
-        this.app.listen(this.port, () => {
+        const server = this.app.listen(this.port, () => {
             console.info(`Server starting on http://0.0.0.0:${this.port}`)
         })
+
+        this.app.locals.live = new LiveData(server)
     }
 }

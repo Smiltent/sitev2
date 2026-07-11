@@ -169,8 +169,6 @@ body {
     flex: 0 0 27%;
 }
 
-.main .m-left .m-l-discord .m-l-d-desc { padding-left: 4px; }
-
 .main .m-left .m-l-spotify .m-l-spotify-container,
 .main .m-left .m-l-discord .m-l-discord-container  {
     display: flex;
