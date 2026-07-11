@@ -21,7 +21,7 @@ function apply(state: any) {
     }
 
     if (sImg) {
-        if (state.discord) {
+        if (state.spotify) {
             sImg.src = state.spotify.art
             sSong.textContent = state.spotify.song
             sArtist.textContent = state.spotify.artist
