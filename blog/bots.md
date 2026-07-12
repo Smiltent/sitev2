@@ -1,5 +1,9 @@
-
-> Why are there "ips banned" on the left side bar? What does it mean?  
+---
+title: Bots System on this Website
+description: Why are there "ips banned" on the left side bar? What does it mean?
+date: 11.07.2026
+time: 19:00
+---
 
 In the big (insert year here), AI bots have became more and more popular scraping website data.  
 Their only flaw... most of them don't have JavaScript enabled.  
@@ -22,4 +26,4 @@ Well, unsure what **X** means, but I do use other sorts of preventing.
 The domain and website itself is proxied through Cloudflare, where I have [Block AI crawlers & bots](https://www.cloudflare.com/the-net/building-cyber-resilience/regain-control-ai-crawlers/) enabled.  
 Server-side, I have [CrowdSec](https://www.crowdsec.net/), which is a way of offering crowdsourced server detection and protection against malicious IPs.  
 
-The bot system on this website is just an extra way to protect yourself. Some other good recommendations for blocking IPs and scrapers are [Fail2Ban](https://github.com/fail2ban/fail2ban) and [anubis](https://github.com/TecharoHQ/anubis)!
+The bot system on this website is just an extra way to protect myself. Some other good recommendations for blocking IPs and scrapers are [Fail2Ban](https://github.com/fail2ban/fail2ban) and [anubis](https://github.com/TecharoHQ/anubis)!

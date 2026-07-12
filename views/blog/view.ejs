@@ -1,4 +1,20 @@
-<h1><%= post.title %></h1>
 
-<%= post.date %>
-<%- post.html %>
+<div class="blog">
+    <div id="header">
+        <a href="/blog">← back</a>
+
+        <h1><%= post.title %></h1>
+        <p><blockquote><%= post.description %></blockquote></p>
+
+        <hr>
+    </div>
+
+    <div id="content">
+        <%- post.html %>
+    </div>
+
+    <div id="footer">
+        <p>posted on <%= post.date %> @ <%= post.time %></p>
+        <p>written by smil</p>
+    </div>
+</div>

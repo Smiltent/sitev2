@@ -6,11 +6,6 @@ import path from "path"
 import fs from "fs"
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// arguments
-const debugArg = process.argv.find(arg => arg.startsWith("--debug"))
-const debug = debugArg ? true : false
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 const entries = fs.readdirSync("./private/ts")
     .filter(f => f.endsWith(".ts"))
     .map(f => path.join("./private/ts", f))
@@ -25,7 +20,7 @@ await Bun.build({
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 import log from './utils/log.ts'
-log(debug)
+log(process.env.NODE_ENV === "dev")
 
 async function main() {
     const db = new Mongo()

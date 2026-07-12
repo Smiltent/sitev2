@@ -5,34 +5,58 @@ import fs from "fs"
 
 export interface Post {
     slug: string
-    name: string
-    date: string
     title: string
+    description: string
+    date: string
+    time: string
     html: string
+    meta: Record<string, string>
 }
 
 const dir = path.join(process.cwd(), "blog")
-const file_re = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/ // yyyy-mm-dd-slug.md
 
 let posts = new Map<string, Post>()
 
 function parse(filename: string): Post | null {
-    const match = filename.match(file_re)
-    const date = match?.[1]
-    const name = match?.[2]
-    if (!date || !name) return null
-
     const raw = fs.readFileSync(path.join(dir, filename), "utf8")
-    const heading = raw.match(/^#\s+(.+)$/m)
-    const title = heading?.[1]?.trim() ?? name.replaceAll("-", " ")
+    const { meta, content } = frontMeta(raw)
+
+    const title = meta["title"]
+    const description = meta["description"]
+    const date = meta["date"]
+    const time = meta["time"]
+    if (!title || !description || !date || !time) return null
 
     return {
         slug: filename.slice(0, -3),
-        name,
-        date,
         title,
-        html: marked.parse(raw, { async: false }),
+        description,
+        date,
+        time,
+        html: marked.parse(content, { async: false }),
+        meta
     }
+}
+
+function frontMeta(raw: string): { meta: Record<string, string>, content: string } {
+    const meta: Record<string, string> = {}
+    if (!raw.startsWith('---')) return { meta, content: raw }
+
+    const end = raw.indexOf("\n---", 3)
+    if (end === -1) return { meta, content: raw }
+
+    for (const line of raw.slice(3, end).split('\n')) {
+        const sep = line.indexOf(":")
+        if (sep === -1) continue
+
+        const key = line.slice(0, sep).trim()
+        const value = line.slice(sep + 1).trim()
+        if (key) {
+            meta[key] = value
+        }
+    }
+
+    return { meta, content: raw.slice(end + 4).replace(/^\r?\n/, "")}
 }
 
 export function loadPosts() {
