@@ -1,5 +1,7 @@
 
 import rootMiddleware from "@/middlewares/root.middleware"
+import guestbookRoute from "@/routes/guestbook.routes"
+import toolRoute from "@/routes/tool.routes"
 import rootRoute from "@/routes/root.routes"
 import blogRoute from "@/routes/blog.routes"
 import LiveData from "@/src/LiveData"
@@ -43,6 +45,8 @@ export default class Express {
     private async routes() {
         this.app.use("/", rootRoute)
         this.app.use("/blog", blogRoute)
+        this.app.use("/tools", toolRoute)
+        this.app.use("/guestbook", guestbookRoute)
 
         this.app.use((req, res) => {
             res.status(404).render("404")

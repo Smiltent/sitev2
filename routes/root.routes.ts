@@ -1,12 +1,21 @@
 
+import spaRender from "@/utils/spa"
 import getRealIP from "@/utils/ip"
 import Bots from "@/models/Bots"
 
 import { Router } from "express"
 const router = Router()
 
-router.get("/", async (req, res) => {
-    res.render("index")
+router.get("/", (req, res) => {
+    spaRender(req, res, "index", "")
+})
+
+router.get("/whoami", (req, res) => {
+    spaRender(req, res, "whoami", "")
+})
+
+router.get("/projects", (req, res) => {
+    spaRender(req, res, "projects", "")
 })
 
 router.get("/_admin/env/index.html", async (req, res) => {

@@ -15,6 +15,8 @@ export default async function root(req: Request, res: Response, next: NextFuncti
         }
     } 
 
+    res.locals.spa = req.get("X-SPA") === "1"
+
     res.locals.state = req.app.locals.live?.state ?? null
     res.locals.counts = await getCounts().catch(() => ({ posts: 0, bots: 0 }))
 

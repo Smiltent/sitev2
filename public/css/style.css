@@ -328,16 +328,91 @@ blockquote::before {
     grid-template-areas:
         'a a a b b b'
         'a a a c c c'
-        'd d d c c c';
+        'd d d c c c'
+        'e e e e e e';
 }
 
-.main .m-right .m-r-nav > div:nth-child(1) { grid-area: a; background-color: var(--mauve); }
-.main .m-right .m-r-nav > div:nth-child(2) { grid-area: b; background-color: var(--red); }
-.main .m-right .m-r-nav > div:nth-child(3) { grid-area: c; background-color: var(--peach); }
-.main .m-right .m-r-nav > div:nth-child(4) { grid-area: d; background-color: var(--blue); }
+.main .m-right .m-r-nav > *:nth-child(1) { grid-area: a; background-color: var(--mauve); }
+.main .m-right .m-r-nav > *:nth-child(2) { grid-area: b; background-color: var(--red); }
+.main .m-right .m-r-nav > *:nth-child(3) { grid-area: c; background-color: var(--peach); }
+.main .m-right .m-r-nav > *:nth-child(4) { grid-area: d; background-color: var(--blue); }
+.main .m-right .m-r-nav > *:nth-child(5) { grid-area: e; background-color: var(--sky); }
 
+.main .m-right .m-r-nav > a,
 .main .m-right .m-r-big {
-    background-color: var(--sky);
+    display: flex;
+    text-decoration: none;
+    color: #000;
+}
+
+/*        */
+/** blog **/
+/*        */
+.main .blog-list a {
+    text-decoration: none;
+    color: #000
+}
+
+.main .blog-list a #desc {
+    color: var(--base)
+}
+
+.main .blog-list a #date {
+    font-size: 12px;
+    color: var(--base)
+}
+
+.main .blog-list .blog-box {
+    padding: 0 0.25rem;
+}
+
+.main .blog-list .blog-box h1 {
+    font-size: 18px;
+}
+
+.main .blog {
+    width: 100%;
+}
+
+.main .blog #header hr {
+    margin: 10px 5px 0;
+}
+
+.main .blog #content h1, 
+.main .blog #content h2, 
+.main .blog #content h3, 
+.main .blog #content h4 {
+    padding-top: 10px;
+}
+
+.main .blog #content p {
+    padding-top: 8px;
+}
+
+.main .blog #footer {
+    font-size: 12px;
+    color: var(--base);
+    padding-top: 50px;
+    text-align: right;
+}
+
+/*          */
+/** footer **/
+/*          */
+.footer p {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+
+    font-size: 12px;
+    color: var(--text);
+
+    text-align: center;
+}
+
+.footer p a:active, .footer p a:visited {
+    color: var(--text)
 }
 
 @keyframes rainbow {
