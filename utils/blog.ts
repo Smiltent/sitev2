@@ -1,5 +1,5 @@
 
-import { marked } from "marked"
+import { marked, type Tokens } from "marked"
 import path from "path"
 import fs from "fs"
 
@@ -15,8 +15,20 @@ export interface Post {
 }
 
 const dir = path.join(process.cwd(), "blog")
-
 let posts = new Map<string, Post>()
+
+marked.use({
+    renderer: {
+        link(token: Tokens.Link) {
+            const text = this.parser.parseInline(token.tokens)
+            const title = token.title ? ` title="${token.title}"` : ""
+            const ext = /^(https?:)?\/\//i.test(token.href)
+
+            const attrs = ext ? ' target="_blank"' : ""
+            return `<a href="${token.href}"${title}${attrs}>${text}</a>`
+        }
+    }
+})
 
 function parse(filename: string): Post | null {
     const raw = fs.readFileSync(path.join(dir, filename), "utf8")
@@ -84,8 +96,6 @@ export const getPosts = () => [...posts.values()]
     .filter(p => !p.hidden)
     .sort((a, b) => b.date.localeCompare(a.date))
 export const postCount = () => posts.size
-
-loadPosts()
 
 // hot reload
 let debounce: ReturnType<typeof setTimeout>
