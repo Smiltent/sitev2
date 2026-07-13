@@ -30,7 +30,6 @@
 
 /* util */
 .gray-bg { background-color: var(--overlay) }
-.clickable { cursor: pointer }
 .warning-tape { background: repeating-linear-gradient(45deg, var(--yellow), var(--yellow) 20px, var(--base) 20px, var(--base) 40px) }
 .rainbow { animation: rainbow 10s linear; animation-iteration-count: infinite }
 .star {
@@ -43,7 +42,7 @@
 
 /* development mode banner */
 .dev-mode-class-thing-so-it-doesnt-overlap-anything {
-    height: 24px;
+    min-height: 24px;
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-top: -1rem;
@@ -62,7 +61,7 @@
 
 body {
     margin: auto;
-    width: 850px;
+    max-width: 850px;
     background-color: rgb(224, 227, 235);
     color: var(--base);
 
@@ -87,6 +86,47 @@ blockquote::before {
     background: var(--text);
 }
 
+/* header nav */
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.header-nav > a {
+    display: flex;
+    flex: 1;
+    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    text-decoration: none;
+    color: #000;
+
+    transition: flex-grow 0.2s ease;
+}
+
+.header-nav > a:hover {
+    flex-grow: 1.5;
+}
+
+.header-nav .h-n-box {
+    border-radius: 5px;
+    padding: 0.85rem;
+
+    font-weight: 500;
+}
+
+.header-nav > *:nth-child(1) { background-color: var(--overlay); }
+.header-nav > *:nth-child(2) { background-color: var(--mauve); }
+.header-nav > *:nth-child(3) { background-color: var(--red); }
+.header-nav > *:nth-child(4) { background-color: var(--peach); }
+.header-nav > *:nth-child(5) { background-color: var(--blue); }
+.header-nav > *:nth-child(6) { background-color: var(--sky); }
+
+/* boxes */
 .box {
     border-radius: 5px;
     padding: 0.85rem;
@@ -164,17 +204,20 @@ blockquote::before {
     color: transparent;
 }
 
-/* main */
-.main {
+/* landing page */
+.lander {
     display: flex;
     flex-direction: row;
 
     width: 100%;
 }
 
-.main > * {
-    padding: 0.25rem;
+.lander > * {
     gap: 5px;
+}
+
+.main {
+    padding: 5px;
 }
 
 /*        */
@@ -183,7 +226,8 @@ blockquote::before {
 .main .m-left {
     display: flex;
     flex-direction: column;
-
+    
+    padding-right: 5px;
     flex: 0 0 27%;
 }
 
@@ -306,8 +350,6 @@ blockquote::before {
     cursor: pointer;
 }
 
-
-
 /*         */
 /** right **/
 /*         */
@@ -396,6 +438,13 @@ blockquote::before {
     text-align: right;
 }
 
+/*         */
+/** tools **/
+/*         */
+/* cs2-multiline */
+
+
+
 /*          */
 /** footer **/
 /*          */
@@ -430,3 +479,37 @@ blockquote::before {
     91% { color: rgb(255, 0, 127) }
 }
 
+
+
+/* MOBILE INTERACTIVITY */
+@media screen and (max-width: 540px) {
+    #h-deco-a, #h-deco-b {
+        display: none;
+    }
+
+    .main .m-right .m-r-nav {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas: 
+            'a'
+            'b'
+            'c'
+            'd'
+            'e';
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main .m-left {
+        flex: 1;
+    }
+
+    .header-nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .h-n-box {
+        flex: 1 1 calc(50% - 10px);
+    }
+}

@@ -1,6 +1,8 @@
 
+<%- include ("../components/$headerNav.ejs") %>
+
 <div class="blog-list">
-    <h1>blog listing</h1>
+    <h1>blog listings</h1>
     
     <% for (const p of posts) { %>
         <a class="blog-box" href="/blog/<%= p.slug %>">
