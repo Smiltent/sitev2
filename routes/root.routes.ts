@@ -11,11 +11,11 @@ router.get("/", (req, res) => {
 })
 
 router.get("/whoami", (req, res) => {
-    spaRender(req, res, "whoami", "")
+    spaRender(req, res, "whoami", "Whoami", { email: process.env.EMAIL })
 })
 
 router.get("/projects", (req, res) => {
-    spaRender(req, res, "projects", "")
+    spaRender(req, res, "projects", "Projects")
 })
 
 router.get("/_admin/env/index.html", async (req, res) => {

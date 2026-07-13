@@ -120,7 +120,7 @@ export function mountView(path: string): (() => void) | void {
 }
 
 function birthday(): (() => void) | void {
-    const el = document.querySelector<HTMLElement>("#birth") // TODO: temp
+    const el = document.querySelector<HTMLElement>("#birth")
     if (!el) return
 
     const [d, m, y] = "04/02/08".split("/").map(Number)

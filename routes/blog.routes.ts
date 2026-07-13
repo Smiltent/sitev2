@@ -6,7 +6,7 @@ import { Router } from "express"
 const router = Router()
 
 router.get("/", async (req, res) => {
-    spaRender(req, res, "blog/index", "blog", { posts: getPosts() })
+    spaRender(req, res, "blog/index", "Blog", { posts: getPosts() })
 })
 
 router.get("/:slug", async (req, res) => {
