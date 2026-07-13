@@ -88,7 +88,7 @@ export default class LiveData {
         const today = (await todayRes.json() as any)?.data?.grand_total
 
         return {
-            today: (today?.text ?? "0 min") as string,
+            today: (today?.text ?? "0 min").replace("START CODING TODAY TEXT", "0 min") as string, // TODO: Make it sot the starting coding today text doesnt show up!
             allTime: (all?.human_readable_total ?? "0 hrs") as string
         }
     }
