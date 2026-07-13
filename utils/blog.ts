@@ -10,6 +10,7 @@ export interface Post {
     date: string
     time: string
     html: string
+    hidden: boolean
     meta: Record<string, string>
 }
 
@@ -34,6 +35,7 @@ function parse(filename: string): Post | null {
         date,
         time,
         html: marked.parse(content, { async: false }),
+        hidden: meta["hidden"] === "true",
         meta
     }
 }
@@ -78,7 +80,9 @@ export function loadPosts() {
 }
 
 export const getPost = (slug: string) => posts.get(slug) ?? null
-export const getPosts = () => [...posts.values()].sort((a, b) => b.date.localeCompare(a.date))
+export const getPosts = () => [...posts.values()]
+    .filter(p => !p.hidden)
+    .sort((a, b) => b.date.localeCompare(a.date))
 export const postCount = () => posts.size
 
 loadPosts()

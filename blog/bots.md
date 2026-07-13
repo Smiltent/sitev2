@@ -3,9 +3,10 @@ title: Bots System on this Website
 description: Why are there "ips banned" on the left side bar? What does it mean?
 date: 11.07.2026
 time: 19:00
+hidden: false
 ---
 
-In the big (insert year here), AI bots have became more and more popular scraping website data.  
+In the big 2026, AI bots have became more and more popular scraping website data.  
 Their only flaw... most of them don't have JavaScript enabled.  
 
 ## How does it ban?
