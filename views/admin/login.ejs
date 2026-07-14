@@ -1,9 +1,13 @@
 
 <%- include ("../components/$headerNav.ejs") %>
 
-<form action="/admin/login" method="POST">
-    <input type="hidden" name="_csrf" value="<%= csrf %>">
+<div class="admin-login">
+    <h1>Admin Dashboard Login</h1>
+    <p>Congrats! You've found the secret admin panel login! This is here just to approve <a href="/guestbook">guestbook submissions</a>!</p>
+    <form action="/admin/login" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
 
-    <input type="password" name="password" required>
-    <input type="submit" value="log in">
-</form>
+        <input type="password" name="password" required>
+        <input type="submit" value="login">
+    </form>
+</div>

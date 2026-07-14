@@ -512,6 +512,35 @@ code {
     color: var(--text)
 }
 
+/* admin login */
+.admin-login {
+    text-align: center;
+}
+
+.admin-login form {
+    padding-top: 15px;
+
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 25%
+}
+
+.admin-login input {
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.admin-login input[type=submit] {
+    background-color: var(--green);
+    cursor: pointer;
+}
+
+.admin-login input:not(:first-child) {
+    margin-top: 5px;
+}
+
 /* admin */
 .admin-c {
     width: 100%;
