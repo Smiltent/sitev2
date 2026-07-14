@@ -17,7 +17,7 @@ But a bot doesn't see all of that, all it sees: *"Oh! There's a link, gotta go s
 When it does, the bot gets banned, only leaving a message which lets them contact me, which, I don't think has the ability to do that.
 
 ## Why can't I see the link in Inspect Element?
-When you load the page, you load up a JS script, which removes the element and the script itself, so you don't even see it!  
+When you load a page, you load it with JavaScript, it removes any element that has the id of `___DO_NOT_CLICK___YOU_WILL_BE_BANNED`!  
 I've added that as a security measure, so there are less false positives.
 If you do want to see it, you can go to the Page Sources instead.
 
