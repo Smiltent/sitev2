@@ -512,6 +512,86 @@ code {
     color: var(--text)
 }
 
+/* admin */
+.admin-c {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+    gap: 10px
+}
+
+.pending-list, .approved-list {
+    flex: 1;
+    min-width: 0;
+}
+
+.pending-list .item,
+.approved-list .item {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    padding: 5px;
+    box-sizing: border-box;
+
+    align-items: center
+}
+
+.pending-list .item .item-details,
+.approved-list .item .item-details {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: hidden;
+}
+
+.pending-list .item .item-details p,
+.approved-list .item .item-details p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.pending-list .item .item-details #date,
+.approved-list .item .item-details #date {
+    font-size: 12px;
+}
+
+.pending-list .item .item-buttons,
+.approved-list .item .item-buttons {
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pending-list .item .item-buttons form,
+.approved-list .item .item-buttons form {
+    width: 100%;
+    margin: 0;
+}
+
+.pending-list .item .item-buttons input,
+.approved-list .item .item-buttons input {
+    width: 100%;
+    cursor: pointer;
+}
+
+.pending-list .item input,
+.approved-list .item input {
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.pending-list .item #approve {
+    background: var(--green);
+}
+
+.pending-list .item #deny,
+.approved-list .item #delete {
+    background: var(--red);
+}
+
 @keyframes rainbow {
     100%, 0% { color: rgb(235, 0, 0) }
     8% { color: rgb(226, 113, 0) }

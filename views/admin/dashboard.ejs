@@ -1,8 +1,53 @@
 
 <%- include ("../components/$headerNav.ejs") %>
 
-<h1>omg secret admin panel</h1>
-<p>hello, smil! (i think)</p>
+<div class="admin">
+    <h1>omg secret admin panel</h1>
+    <p>hello, smil! (i think)</p>
 
-<%= JSON.stringify(approved) %>
-<%= JSON.stringify(pending) %>
+    <div class="admin-c">
+        <div class="approved-list">
+            <h2>Approved</h2>
+
+            <% approved.forEach(i => { %>
+                <div class="item">
+                    <div class="item-details">
+                        <p><b>Name:</b> <%= i.name %></p>
+                        <p><b>Website:</b> <%= i.website || "none" %></p>
+                        <p><b>Message:</b> <%= i.msg %></p>
+                        <p id="date"><%= i.createdAt.toISOString().replace("T", " ").slice(0, 19) %></p>
+                    </div>
+                    <div class="item-buttons">
+                        <form action="/admin/e/<%= i._id %>/delete" method="POST">
+                            <input type="hidden" name="_csrf" value="<%= csrf %>">
+                            <input id="delete" type="submit" value="Delete">
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="pending-list">
+            <h2>Pending</h2>
+            <% pending.forEach(i => { %>
+                <div class="item">
+                    <div class="item-details">
+                        <p><b>Name:</b> <%= i.name %></p>
+                        <p><b>Website:</b> <%= i.website || "none" %></p>
+                        <p><b>Message:</b> <%= i.msg %></p>
+                        <p id="date"><%= i.createdAt.toISOString().replace("T", " ").slice(0, 19) %></p>
+                    </div>
+                    <div class="item-buttons">
+                        <form action="/admin/e/<%= i._id %>/approve" method="POST">
+                            <input type="hidden" name="_csrf" value="<%= csrf %>">
+                            <input id="approve" type="submit" value="Approve">
+                        </form>
+                        <form action="/admin/e/<%= i._id %>/deny" method="POST">
+                            <input type="hidden" name="_csrf" value="<%= csrf %>">
+                            <input id="deny" type="submit" value="Deny">
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>

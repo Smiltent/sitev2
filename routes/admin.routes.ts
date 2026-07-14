@@ -47,7 +47,7 @@ router.post("/e/:id/approve", reqAdmin, verifyCsrf, async (req, res) => {
     res.redirect("/admin/dashboard")
 }) 
 
-router.post("/e/:id/unapprove", reqAdmin, verifyCsrf, async (req, res) => {
+router.post("/e/:id/deny", reqAdmin, verifyCsrf, async (req, res) => {
     await Guestbook.findByIdAndUpdate(req.params.id, { approved: false }).catch(() => null)
     res.redirect("/admin/dashboard")
 }) 
