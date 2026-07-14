@@ -35,7 +35,7 @@ export default class Express {
         this.app.use(csrf)
 
         this.app.set("view engine", "ejs")
-        this.app.set("layout", "components/$index")
+        this.app.set("layout", "components/$layout")
 
         const git = await getGitInfo()
         this.app.locals.gitHash = git.hash
