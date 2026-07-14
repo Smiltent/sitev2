@@ -5,12 +5,12 @@ import { safeEqual } from "@/utils/equal"
 import crypto from "crypto"
 
 export function csrf(req: Request, res: Response, next: NextFunction) {
-    let token = getCookie(req, "csrff")
+    let token = getCookie(req, "csrf")
 
     if (!token || !/^[a-f0-9]{64}$/.test(token)) {
         token = crypto.randomBytes(32).toString('hex')
 
-        res.cookie("csrff", token, {
+        res.cookie("csrf", token, {
             httpOnly: true,
             sameSite: "lax",
             secure: process.env.NODE_ENV !== "dev",
@@ -24,7 +24,7 @@ export function csrf(req: Request, res: Response, next: NextFunction) {
 }
 
 export function verifyCsrf(req: Request, res: Response, next: NextFunction) {
-    const cookie = getCookie(req, "csrff")
+    const cookie = getCookie(req, "csrf")
     const sent = (req.body?._csrf ?? req.get("x-csrf-token") ?? "") as string
 
     if (!cookie || !sent || !safeEqual(cookie, sent)) {
