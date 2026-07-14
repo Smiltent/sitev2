@@ -1,5 +1,4 @@
 
-import migrations from "../utils/migrations"
 import mongoose from "mongoose"
 
 export default class Database {
@@ -15,7 +14,6 @@ export default class Database {
             await mongoose.connect(this.uri, {
                 maxPoolSize: 20
             })
-            await migrations()
 
             console.info("Connected to Database!")
         } catch (err) {
