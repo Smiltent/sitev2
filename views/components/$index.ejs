@@ -16,29 +16,15 @@
 <body>
     <a id="___DO_NOT_CLICK___YOU_WILL_BE_BANNED" href="/_admin/env/index.html" rel="nofollow" style="display: none;">super duper secret admin panel :3</a>
 
-    <% if (dev) { %>
-        <div class="dev-mode-class-thing-so-it-doesnt-overlap-anything warning-tape">
-            <p>WEBSITE UNDER DEV MODE! PLEASE PROCEED WITH CAUTION! (theres no caution lol)</p>
-        </div>
-    <% } %>
-
+    <%- include("$dev.ejs") %>
     <%- include("$88x31.ejs") %>
-
-    <div class="header">
-        <div class="box h-main gray-bg">
-            <p id="h-deco-a"><span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span></p>
-            <h1>smil's website</h1>
-            <p id="h-deco-b"><span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span> · <span id="h-deco-single">✧</span> · <span id="h-deco-single">✦</span></p>
-        </div>
-    </div>
+    <%- include("$header.ejs") %>
 
     <div class="main">
         <%- body %>
     </div>
 
-    <div class="footer">
-        <p>sm<a href="/admin/">i</a>l copyright <%= new Date().getFullYear() %> <a href="<%= gitUrl %>">sitev2@<%= gitHash %></a></p>
-    </div>
+    <%- include("$footer.ejs") %>
 
     <script type="module" src="/public/js/spa.js"></script>
 </body>
