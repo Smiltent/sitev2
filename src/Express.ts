@@ -1,15 +1,17 @@
 
 import rootMiddleware from "@/middlewares/root.middleware"
 import guestbookRoute from "@/routes/guestbook.routes"
+import expressLayouts from "express-ejs-layouts"
+import adminRoute from "@/routes/admin.routes"
 import toolRoute from "@/routes/tool.routes"
 import rootRoute from "@/routes/root.routes"
 import blogRoute from "@/routes/blog.routes"
 import LiveData from "@/src/LiveData"
 import getGitInfo from "@/utils/git"
-import path from "path"
-
-import expressLayouts from "express-ejs-layouts"
+import { csrf } from '@/utils/csrf'
 import express from "express"
+import path from "path"
+import spaRender from "@/utils/spa"
 
 export default class Express {
     private app: express.Express
@@ -30,6 +32,7 @@ export default class Express {
         this.app.use(expressLayouts)
         this.app.use(express.json())
         this.app.use(express.urlencoded({ extended: true }))
+        this.app.use(csrf)
 
         this.app.set("view engine", "ejs")
         this.app.set("layout", "components/$index")
@@ -46,10 +49,11 @@ export default class Express {
         this.app.use("/", rootRoute)
         this.app.use("/blog", blogRoute)
         this.app.use("/tools", toolRoute)
+        this.app.use("/admin", adminRoute)
         this.app.use("/guestbook", guestbookRoute)
 
         this.app.use((req, res) => {
-            res.status(404).render("404")
+            spaRender(req, res, "404", "404", {}, 404)
         })
     }
 
