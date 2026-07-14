@@ -22,27 +22,7 @@
         </div>
     <% } %>
 
-    <div class="eighty8x31s-wrap">
-        <div class="eighty8x31s">
-            <a href="#clicked">
-                <img src="/public/88x31/s/smilt.dev.png" width="88" height="31">
-            </a>
-            <a href="https://sad.ovh">
-                <img src="/public/88x31/s/sad.ovh.png" width="88" height="31">
-            </a>
-            <a href="https://noob-dev.fyi">
-                <img src="/public/88x31/s/noob-dev.fyi.gif" width="88" height="31">
-            </a>
-            <img src="/public/88x31/j/tom.png" width="88" height="31">
-            <img src="/public/88x31/j/sbeve.png" width="88" height="31">
-            <img src="/public/88x31/j/nico.gif" width="88" height="31">
-            <img src="/public/88x31/j/empty.png" width="88" height="31">
-            <img src="/public/88x31/j/empty.png" width="88" height="31">
-            <img src="/public/88x31/j/empty.png" width="88" height="31">
-            <img src="/public/88x31/j/empty.png" width="88" height="31">
-            <img src="/public/88x31/j/empty.png" width="88" height="31">
-        </div>
-    </div>
+    <%- include("$88x31.ejs") %>
 
     <div class="header">
         <div class="box h-main gray-bg">
@@ -57,7 +37,7 @@
     </div>
 
     <div class="footer">
-        <p>smil copyright <%= new Date().getFullYear() %> <a href="<%= gitUrl %>">sitev2@<%= gitHash %></a></p>
+        <p>sm<a href="/admin/">i</a>l copyright <%= new Date().getFullYear() %> <a href="<%= gitUrl %>">sitev2@<%= gitHash %></a></p>
     </div>
 
     <script type="module" src="/public/js/spa.js"></script>
