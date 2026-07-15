@@ -582,7 +582,10 @@ code {
 
 .gb-right .gb-entry #name {
     font-size: 20px;
-    color: #000
+    margin: 0;
+    color: #000;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .gb-right .gb-entry #msg {
