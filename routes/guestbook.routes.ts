@@ -29,7 +29,8 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
         return res.send("Name must be max 32 char and msg must be max 500 char!!! (also you are getting this cause you manually did it or changed the html values) 😤😤")
     }
 
-    const safeSite = /^https?:\/\/.+/i.test(website) && website.length <= 128 ? website : ""
+    const normalized = /^https?:\/\//i.test(website) ? website : `https://${website}`
+    const safeSite = /^https?:\/\/.+/i.test(website) && website.length <= 128 ? normalized : ""
 
     try {
         await Guestbook.create({
