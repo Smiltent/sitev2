@@ -20,7 +20,6 @@ router.get("/projects", (req, res) => {
 
 router.get("/_admin/env/index.html", async (req, res) => {
     const ip = getRealIP(req)
-    console.debug(getRealIP(req))
     const normalized = Array.isArray(ip) ? ip[0] : ip
 
     if (await Bots.findOne({ ip })) return res.send("If you've accessed this page, this means your IP address is whitelisted!")
