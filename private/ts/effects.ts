@@ -117,6 +117,10 @@ export function mountView(path: string): (() => void) | void {
     if (path === "/whoami") {
         return birthday()
     }
+
+    if (path === "/projects") {
+        return clickableProjects()
+    }
 }
 
 function birthday(): (() => void) | void {
@@ -136,4 +140,14 @@ function birthday(): (() => void) | void {
 
     const timer = setInterval(render, 300)
     return () => clearInterval(timer)
+}
+
+function clickableProjects() {
+    document.querySelectorAll<HTMLDivElement>(".project-box").forEach(e => {
+        const url = e.dataset.url
+
+        e.addEventListener("click", () => {
+            window.open(url, "_blank")
+        })
+    })
 }

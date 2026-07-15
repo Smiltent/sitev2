@@ -12,7 +12,7 @@
                         <p><b>Name:</b> <%= i.name %></p>
                         <p><b>Website:</b> <%= i.website || "none" %></p>
                         <p><b>Message:</b> <%= i.msg %></p>
-                        <p id="date"><%= i.createdAt.toISOString().replace("T", " ").slice(0, 19) %></p>
+                        <p id="date"><%= i.createdAt.toLocaleString("en-LV", { timeZoneName: "short" }) %></p>
                     </div>
                     <div class="item-buttons">
                         <form action="/admin/e/<%= i._id %>/delete" method="POST">
@@ -31,7 +31,7 @@
                         <p><b>Name:</b> <%= i.name %></p>
                         <p><b>Website:</b> <%= i.website || "none" %></p>
                         <p><b>Message:</b> <%= i.msg %></p>
-                        <p id="date"><%= i.createdAt.toISOString().replace("T", " ").slice(0, 19) %></p>
+                        <p id="date"><%= i.createdAt.toLocaleString("en-LV", { timeZoneName: "short" }) %>/p>
                     </div>
                     <div class="item-buttons">
                         <form action="/admin/e/<%= i._id %>/approve" method="POST">

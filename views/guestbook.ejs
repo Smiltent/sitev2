@@ -1,0 +1,33 @@
+
+<%- include ("./components/$headerNav.ejs") %>
+
+<div class="guestbook">
+    <div class="gb-left">
+        <h1>sign the guestbook!</h1>
+        <form action="/guestbook" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrf %>">
+
+            <input type="text" maxlength="32" name="name" required placeholder="username">
+            <input type="text" maxlength="128" name="website" placeholder="website (optional)">
+            <textarea maxlength="500" name="msg" placeholder="message"></textarea>
+
+            <p id="error" data-type="<%= type %>"><%= text %></p>
+
+            <input type="submit" value="submit entry!">
+        </form>
+    </div>
+    <div class="gb-right">
+        <% entries.forEach(e => { %>
+            <div class="gb-entry">
+                <% if (e.website) { %>
+                    <a id="name" href="<%= e.website %>" target="_blank" rel="noopener nofollow"><%= e.name %> (<%= e.website %>)</a>
+                <% } else { %>
+                    <p id="name"><%= e.name %></p>
+                <% } %>
+
+                <p id="msg"><%= e.msg %></p>
+                <p id="date"><%= e.createdAt.toLocaleString("en-LV", { timeZoneName: "short" }) %></p>
+            </div>
+        <% }) %>
+    </div>
+</div>

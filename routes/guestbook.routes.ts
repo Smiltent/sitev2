@@ -17,7 +17,7 @@ async function getEntries() {
 }
 
 router.get("/", async (req, res) => {
-    spaRender(req, res, "guestbook/index", "Guestbook", { entries: await getEntries() })
+    spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "", text: ""})
 })
 
 router.post("/", submitLimit, verifyCsrf, async (req, res) => {
@@ -39,10 +39,10 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
             approved: false
         })
     } catch {
-        return spaRender(req, res, "guestbook/index", "Guestbook", { type: "good", "text": "Something went wrong!" })
+        return spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "bad", "text": "Something went wrong!" })
     }
 
-    spaRender(req, res, "guestbook/index", "Guestbook", { type: "good", "text": "Thanks! Your entry has been submitted and is awaiting approval." })
+    spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "good", "text": "Thanks! Your entry has been submitted and is awaiting approval." })
 })
 
 export default router

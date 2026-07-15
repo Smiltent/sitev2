@@ -235,7 +235,7 @@ code {
 }
 
 .main {
-    padding: 5px;
+    padding: 5px 5px 5rem 5px;
 }
 
 /*        */
@@ -478,34 +478,117 @@ code {
 }
 
 /* projects */
+.main .project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-auto-flow: row;
+    gap: 5px;
+}
+
+.main .project-list .project-box {
+    background-color: var(--overlay);
+    padding: 10px;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.main .project-list .project-box img {
+    width: calc(100% + 20px);
+    margin: -10px -10px 10px -10px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+
+    height: auto;
+    display: block;
+}
+
 .main .project-list a {
     text-decoration: none;
     color: #000
 }
 
-.main .project-list a #desc {
-    color: var(--base)
-}
 
-.main .project-list .project-box {
-    padding: 0 0.25rem;
-}
-
-.main .project-list .project-box > * {
-    padding-left: 5px;
-}
-
-.main .project-list .project-box h1 {
+/* .main .project-list .project-box h1 {
     font-size: 18px;
-}
-
+} */
 
 /*         */
 /** tools **/
 /*         */
 /* cs2-multiline */
 
+/*             */
+/** guestbook **/
+/*             */
+.guestbook {
+    display: flex;
+    gap: 5px;
+}
 
+.gb-left {
+    flex: 0 0 38%;
+    align-self: flex-start;
+
+    padding: 10px;
+    background-color: var(--overlay);
+    border-radius: 5px;
+}
+
+.gb-left form {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    padding-top: 10px;
+    gap: 5px;
+}
+
+.gb-left form p[data-type="bad"] {
+    color: var(--dred)
+}
+
+.gb-left form input, 
+.gb-left form textarea {
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.gb-left form textarea {
+    resize: vertical
+}
+
+.gb-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 5px;
+}
+
+.gb-right .gb-entry {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0, 0.1);
+}
+
+.gb-right .gb-entry #name {
+    font-size: 20px;
+    color: #000
+}
+
+.gb-right .gb-entry #msg {
+    padding-bottom: 8px;
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.gb-right .gb-entry #date {
+    font-size: 12px;
+}
 
 /*          */
 /** footer **/
