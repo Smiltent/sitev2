@@ -5,10 +5,12 @@
     <h1>blog listings</h1>
     
     <% for (const p of posts) { %>
-        <a class="blog-box" href="/blog/<%= p.slug %>">
-            <h1><%= p.title %> </h1>
-            <p id="desc"><%= p.description %></p>
-            <p id="date"><%= p.date %> - <%= p.time %></p>
-        </a>
+        <div class="blog-box">
+            <a href="/blog/<%= p.slug %>">
+                <h1><%= p.title %> </h1>
+                <p id="desc"><%= p.description %></p>
+                <p id="date"><%= p.date %> - <%= p.time %></p>
+            </a>
+        </div>
     <% } %>
 </div>
