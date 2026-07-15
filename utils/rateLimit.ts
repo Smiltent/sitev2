@@ -31,8 +31,10 @@ export default function rateLimit(windowMs: number, max: number) {
         if (recent.length >= max) {
             const retry = recent[0]! + windowMs - now
             res.set("Retry-After", String(Math.ceil(retry / 1000)))
-
-            return res.status(429).send("Too many requests!")
+            
+            if (process.env.NODE_ENV !== "dev") {
+                return res.status(429).send("Too many requests!")
+            }
         }
 
         recent.push(now)
