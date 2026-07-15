@@ -10,8 +10,9 @@ This is my personal website, having information about myself, a blog, projects a
 The website itself is on https://smilt.dev, but a demo version, without ratelimiting and access to the backend is on https://smilt.quack.zip
 
 # Features
-* Blog, which parses from .md files
-* Guestbook, where users can write in it 
+* a Blog which parses from .md files
+* a Guestbook where users can write in it, all of them need to be apporoved or denied
+* an Admin panel, where you review the guestbook submissions, can be found by clicking the `i` in `smil` on the footer
 * Uptime data from my servers
 * Spotify and Discord display
 

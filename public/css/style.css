@@ -60,6 +60,12 @@
     text-shadow: -1px -1px 0 var(--base), 1px -1px 0 var(--base), -1px 1px 0 var(--base), 1px 1px 0 var(--base);
 }
 
+.dev-mode-class-thing-so-it-doesnt-overlap-anything a {
+    font-weight: bold;
+    color: var(--yellow);
+    text-shadow: -1px -1px 0 var(--base), 1px -1px 0 var(--base), -1px 1px 0 var(--base), 1px 1px 0 var(--base);
+}
+
 body {
     margin: auto;
     max-width: 850px;
