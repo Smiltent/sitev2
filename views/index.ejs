@@ -8,7 +8,6 @@
             <div class="m-l-stats-container">
                 <p><b>ips banned:</b> <%= counts.bots %> (<a href="/blog/bots">?</a>)</p>
                 <p><b>posts:</b> <%= counts.posts %></p>
-
             </div>
         </div>
 
@@ -45,17 +44,16 @@
             </div>
         </div>
 
-        <!-- <div class="box m-l-status gray-bg">
+        <div class="box m-l-uptime gray-bg">
             <div class="box-header">
-                <h1><i class="fa-solid fa-bars-progress fa-sm"></i></i> status</h1>
+                <h1><i class="fa-solid fa-bars-progress fa-sm"></i> uptime</h1>
             </div>
-            <div class="m-l-status-container">
-                <p><span id="" style="color: var(--dgreen)">⬤</span> peanut</p>
-                <p><span id="" style="color: var(--dred)">⬤</span> jelly</p>
-                <p><span id="">⬤</span> jam</p>
-                <p><span id="">⬤</span> forge</p>
+            <div class="m-l-uptime-container">
+                <% state?.uptime?.forEach(e => { %>
+                    <p>[<span id="status-icon" data-status="<%= e.status %>">⬤</span>] <%= e.name %></p>
+                <% }) %>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <div class="m-right">
