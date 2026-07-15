@@ -768,4 +768,20 @@ code {
     .h-n-box {
         flex: 1 1 calc(50% - 10px);
     }
+
+    .guestbook {
+        flex-direction: column;
+        align-self: normal;
+        gap: 10px;
+    }
+
+    .guestbook .gb-left {
+        width: calc(100% - 20px);
+    }
+
+    .guestbook .gb-left,
+    .guestbook .gb-right {
+
+        flex: 1;
+    }
 }
