@@ -7,7 +7,7 @@
 This is my personal website, having information about myself, a blog, projects and a guestbook!
 
 # Website
-The website itself is on https://smilt.dev, but a demo version, without ratelimiting and access to the backend is on https://smilt.quack.zip
+The website itself is on https://smilt.dev, but a demo version, without ratelimiting and admin access access to guestbook reviewing is on https://site.quack.zip
 
 # Features
 * a Blog which parses from .md files
