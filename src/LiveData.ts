@@ -2,16 +2,22 @@
 import type { Server } from "node:http"
 import { WebSocketServer } from "ws"
 
+export interface Monitor {
+    name: String
+    status: "up" | "down" | "pending" | "maintenance" | "unknown"
+}
+
 export interface LiveState {
     discord: { status: string, custom: string | null } | null
     spotify: { song: string, artist: string, art: string, trackId: string } | null
     coding: { today: string, allTime: string } | null
+    uptime: Monitor[] | null
 
     updatedAt: number
 }
 
 export default class LiveData {
-    public state: LiveState = { discord: null, spotify: null, coding: null, updatedAt: 0 }
+    public state: LiveState = { discord: null, spotify: null, coding: null, uptime: null, updatedAt: 0 }
     private wss: WebSocketServer
 
     constructor(server: Server) {
@@ -26,9 +32,10 @@ export default class LiveData {
     }
 
     private async refresh() {
-        const [discord, coding] = await Promise.allSettled([
+        const [discord, coding, uptime] = await Promise.allSettled([
             this.discSpot(),
-            this.coding()
+            this.coding(),
+            this.uptime()
         ])
 
         if (discord.status === "fulfilled") {
@@ -38,6 +45,10 @@ export default class LiveData {
 
         if (coding.status === "fulfilled") {
             this.state.coding = coding.value
+        }
+
+        if (uptime.status === "fulfilled") {
+            this.state.uptime = uptime.value
         }
 
         this.state.updatedAt = Date.now()
@@ -84,12 +95,47 @@ export default class LiveData {
             fetch("https://hackatime.hackclub.com/api/hackatime/v1/users/current/statusbar/today", { headers })
         ])
 
+        if (!allRes.ok || !todayRes.ok) throw new Error("coding data req failedddddddddddd")
+
         const all = (await allRes.json() as any)?.data
         const today = (await todayRes.json() as any)?.data?.grand_total
 
         return {
-            today: (today?.text ?? "0 min").replace("START CODING TODAY TEXT", "0 min") as string, // TODO: Make it sot the starting coding today text doesnt show up!
+            today: (today?.text ?? "0 min").replace("Start coding to track your time", "0m") as string,
             allTime: (all?.human_readable_total ?? "0 hrs") as string
         }
+    }
+
+    private async uptime() {
+        const base = process.env.UPTIME_KUMA_URL!.replace(/\/$/, "")
+        const slug = process.env.UPTIME_KUMA_SLUG
+        
+        const [pageRes, beatRes] = await Promise.all([
+            fetch(`${base}/api/status-page/${slug}`),
+            fetch(`${base}/api/status-page/heartbeat/${slug}`)
+        ])
+        if (!pageRes.ok || !beatRes.ok) throw new Error("failed to get the server stauts apge thing!~!!!!")
+
+        const page = await pageRes.json() as any
+        const { heartbeatList } = await beatRes.json() as any
+
+        const codes: Record<number, Monitor["status"]> = {
+            0: "down",
+            1: "up",
+            2: "pending",
+            3: "maintenance"
+        }
+
+        return (page.publicGroupList ?? []).flatMap((group: any) => 
+            (group.monitorList ?? []).map((m: any): Monitor => {
+                const beats = heartbeatList?.[m.id] ?? []
+                const last = beats[beats.length - 1]
+
+                return {
+                    name: m.name as string,
+                    status: codes[last?.status] ?? "unknown"
+                }
+            })
+        )
     }
 }

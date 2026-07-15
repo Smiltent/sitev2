@@ -18,7 +18,8 @@
     --sky: #99d1db;
 
     --dred: #ff4e5d;
-    --dgreen: #57d839; 
+    --dgreen: #58e039; 
+    --dblue: #1e66f5;
 }
 
 * {
@@ -367,6 +368,23 @@ code {
     cursor: pointer;
 }
 
+/* uptime specific */
+.main .m-left .m-l-uptime .m-l-uptime-container #status-icon[data-status="up"] {
+    color: var(--dgreen)
+}
+
+.main .m-left .m-l-uptime .m-l-uptime-container #status-icon[data-status="down"] {
+    color: var(--dred)
+}
+
+.main .m-left .m-l-uptime .m-l-uptime-container #status-icon[data-status="maintenance"] {
+    color: var(--dblue)
+}
+
+.main .m-left .m-l-uptime .m-l-uptime-container #status-icon[data-status="unknown"] {
+    color: var(--base)
+}
+
 /*         */
 /** right **/
 /*         */
@@ -533,7 +551,7 @@ code {
 }
 
 .admin-login input[type=submit] {
-    background-color: var(--green);
+    background-color: var(--blue);
     cursor: pointer;
 }
 
