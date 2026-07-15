@@ -6,7 +6,10 @@ export default function spaRender(req: Request, res: Response, view: string, tit
     const full = title ? `${title} - ${site}` : site
     res.locals.title = full
 
+    res.set("Vary", "X-SPA")
+
     if (res.locals.spa) {
+        res.set("Cache-Control", "no-store")
         res.set("X-Title", full)
         return res.render(view, { ...data, layout: false })
     }
