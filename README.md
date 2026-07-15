@@ -6,14 +6,14 @@
 # About
 This is my personal website, having information about myself, a blog, projects and a guestbook!
 
+# Website
+The website itself is on https://smilt.dev, but a demo version, without ratelimiting and access to the backend is on https://smilt.quack.zip
+
 # Features
 * Blog, which parses from .md files
 * Guestbook, where users can write in it 
 * Uptime data from my servers
 * Spotify and Discord display
-
-# Demo Site (only during Hack Club Horizons review)
-The website itself is on https://smilt.dev, but a demo version, without ratelimiting and access to the backend is on https://smilt.quack.zip
 
 # Setup
 Rename [.env.example](.env.example) to .env, configure values.
