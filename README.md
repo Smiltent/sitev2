@@ -15,6 +15,7 @@ The website itself is on https://smilt.dev, but a demo version, without ratelimi
 * an Admin panel, where you review the guestbook submissions, can be found by clicking the `i` in `smil` on the footer
 * Uptime data from my servers
 * Spotify and Discord display
+* Bot prevention - see [the blog page about it](https://smilt.dev/blog/bots)!
 
 # Setup
 Rename [.env.example](.env.example) to .env, configure values.
