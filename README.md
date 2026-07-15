@@ -17,7 +17,7 @@ The website itself is on https://smilt.dev, but a demo version, without ratelimi
 
 # Setup
 Rename [.env.example](.env.example) to .env, configure values.
-Hackatime api key can be found here!
+Hackatime api key can be found [here](https://hackatime.hackclub.com/my/settings/setup)!
 
 Install the [Bun](https://bun.sh/) runtime. Then, run:
 ```sh
