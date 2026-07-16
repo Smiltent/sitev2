@@ -17,6 +17,14 @@ async function navigate(url: string, push: boolean = true) {
         const res = await fetch(path, { headers: { "X-SPA": "1" }})
         if (!res.ok && res.status !== 404) throw new Error(`HTTP ${res.status}`)
 
+        const finalURL = new URL(res.url, location.origin)
+
+        if (finalURL.origin !== location.origin) {
+            location.href = res.url
+            return
+        }
+
+        const finalPath = finalURL.pathname + finalURL.search
         const html = await res.text()
         const title = res.headers.get("X-Title")
 
@@ -34,13 +42,16 @@ async function navigate(url: string, push: boolean = true) {
         }
 
         if (push) {
-            history.pushState({}, "", path)
+            history.pushState({}, "", finalPath)
+        } else if (finalPath !== location.pathname + location.search) {
+            history.replaceState({}, "", finalPath)
         }
 
         window.scrollTo({ top: 0 })
-        teardown = mountView(target.pathname) ?? null
+        teardown = mountView(finalURL.pathname) ?? null
         apply()
-    } catch {
+    } catch (err) {
+        console.error(`SPA nav failed: ${path}, err: ${err}`)
         location.href = url
     } finally {
         document.body.classList.remove("spa-loading")

@@ -445,10 +445,6 @@ code {
     color: var(--base)
 }
 
-.main .blog-list .blog-box {
-    padding: 0 0.25rem;
-}
-
 .main .blog-list .blog-box > * {
     padding-left: 5px;
 }
@@ -523,7 +519,58 @@ code {
 /*         */
 /** tools **/
 /*         */
+.main .tools-list a {
+    text-decoration: none;
+    color: #000;
+}
+
+.main .tools-list a #desc {
+    color: var(--base)
+}
+
+.main .tools-list .tools-box > * {
+    padding-left: 5px;
+}
+
+.main .tools-list .tools-box h2 {
+    font-size: 18px;
+}
+
 /* cs2-multiline */
+.cs2-multiline {
+    display: flex;
+    gap: 5px;
+}
+
+.cs2m-left,
+.cs2m-right {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 5px;
+    background-color: var(--overlay);
+    border-radius: 5px;
+}
+
+.cs2m-left button,
+.cs2m-right button,
+.cs2m-left input,
+.cs2m-right textarea {
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.cs2m-right textarea {
+    flex: 1;
+    min-height: 200px;
+    resize: vertical;
+}
 
 /*             */
 /** guestbook **/
@@ -575,7 +622,7 @@ code {
 }
 
 .gb-right .gb-entry {
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     background-color: rgba(0,0,0, 0.1);
 }
@@ -779,6 +826,12 @@ code {
     }
 
     .guestbook {
+        flex-direction: column;
+        align-self: normal;
+        gap: 10px;
+    }
+
+    .cs2-multiline {
         flex-direction: column;
         align-self: normal;
         gap: 10px;

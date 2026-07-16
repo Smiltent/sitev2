@@ -1,4 +1,6 @@
 
+import { init } from "./tools/cs2-multiline"
+
 export function initPersistant() {    
     initSpotifyURL()
     initSparkle()
@@ -114,12 +116,10 @@ function initHoneypot() {
 }
 
 export function mountView(path: string): (() => void) | void {
-    if (path === "/whoami") {
-        return birthday()
-    }
-
-    if (path === "/projects") {
-        return clickableProjects()
+    switch (path) {
+        case "/whoami": return birthday()
+        case "/projects": return clickableProjects()
+        case "/tools/cs2-multiline": return init()
     }
 }
 
@@ -151,3 +151,4 @@ function clickableProjects() {
         })
     })
 }
+
