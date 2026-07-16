@@ -23,7 +23,7 @@ await Bun.build({
     outdir: './public/js',
     target: 'browser',
     env: "inline",
-    minify: true
+    minify: process.env.NODE_ENV !== "dev"
 })
 
 async function main() {
