@@ -117,29 +117,9 @@ function initHoneypot() {
 
 export function mountView(path: string): (() => void) | void {
     switch (path) {
-        // case "/whoami": return birthday()
         case "/projects": return clickableProjects()
         case "/tools/cs2-multiline": return init()
     }
-}
-
-function birthday(): (() => void) | void {
-    const el = document.querySelector<HTMLElement>("#birth")
-    if (!el) return
-
-    const [d, m, y] = "04/02/08".split("/").map(Number)
-    const year = y! < 100 ? 2000 + y! : y
-    
-    const dob = new Date(year!, m! - 1, d)
-    const ms = 365.2425 * 24 * 60 * 60 * 1000
-
-    const render = () => { 
-        el.textContent = ((Date.now() - dob.getTime()) / ms).toFixed(8)
-    }
-    render()
-
-    const timer = setInterval(render, 300)
-    return () => clearInterval(timer)
 }
 
 function clickableProjects() {
