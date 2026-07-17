@@ -117,7 +117,7 @@ function initHoneypot() {
 
 export function mountView(path: string): (() => void) | void {
     switch (path) {
-        case "/whoami": return birthday()
+        // case "/whoami": return birthday()
         case "/projects": return clickableProjects()
         case "/tools/cs2-multiline": return init()
     }
