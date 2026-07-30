@@ -30,7 +30,7 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
     }
 
     const normalized = /^https?:\/\//i.test(website) ? website : `https://${website}`
-    const safeSite = /^https?:\/\/.+/i.test(website) && website.length <= 128 ? normalized : ""
+    const safeSite = website && normalized.length <= 128 ? normalized : ""
 
     try {
         await Guestbook.create({
