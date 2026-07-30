@@ -7,7 +7,7 @@ import spaRender from "@/utils/spa"
 import { Router } from "express"
 const router = Router()
 
-const submitLimit = rateLimit(10 * 60 * 1000, 3)
+const submitLimit = rateLimit(10 * 60 * 1000, 10)
 
 async function getEntries() {
     return await Guestbook.find({ approved: true })
@@ -25,8 +25,8 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
     const name = String(req.body?.name ?? "").trim()
     const msg = String(req.body?.msg ?? "").trim()
 
-    if (name.length < 1 || name.length > 32 || msg.length < 1 || msg.length > 500) {
-        return res.send("Name must be max 32 char and msg must be max 500 char!!! (also you are getting this cause you manually did it or changed the html values) 😤😤")
+    if (msg.length < 1 || msg.length > 500) {
+        return spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "bad", "text": "Message can only be 500 characters long!" })
     }
 
     const normalized = /^https?:\/\//i.test(website) ? website : `https://${website}`
