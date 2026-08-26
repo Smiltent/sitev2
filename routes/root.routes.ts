@@ -4,6 +4,8 @@ import getRealIP from "@/utils/ip"
 import Bots from "@/models/Bots"
 
 import { Router } from "express"
+import path from "path"
+
 const router = Router()
 
 router.get("/", (req, res) => {
@@ -16,6 +18,11 @@ router.get("/whoami", (req, res) => {
 
 router.get("/projects", (req, res) => {
     spaRender(req, res, "projects", "Projects")
+})
+
+router.get("/robots.txt", (req, res) => {
+    res.type("text/plain")
+    res.sendFile(path.join(__dirname, "..", "public", "robots.txt"))
 })
 
 router.get("/_admin/env/index.html", async (req, res) => {
