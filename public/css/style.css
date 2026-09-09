@@ -41,6 +41,11 @@
     transform: translate(-50%, -50%);
 }
 
+.no-deco, .no-deco:active {
+    text-decoration: none;
+    color: #000;
+}
+
 /* development mode banner */
 .dev-mode-class-thing-so-it-doesnt-overlap-anything {
     min-height: 24px;
