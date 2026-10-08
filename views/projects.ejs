@@ -2,28 +2,43 @@
 <%- include ("components/$headerNav.ejs") %>
 
 <div class="projects">
-    <h1>projects</h1>
-
     <div class="project-list">
-        <div class="project-box" data-url="https://github.com/Smiltent/edu">
-            <img src="https://opengraph.githubassets.com/1/Smiltent/edu">
-            <h2><i class="fa-brands fa-typescript"></i> edu</h2>
-            <p id="desc">Edupage scraper, which makes it easier to check the Schedule</p>
+        <div class="project-box" data-url="https://github.com/Smiltent/edu" style="background-image: url('/public/img/projects/edu/bg.png')">
+            <img class="project-txt" src="/public/img/projects/edu/txt.svg" alt="edu">
+            <div class="project-info">
+                <p class="project-desc">EduPage Scraper & Schedule viewer</p>
+                <div class="project-langs">
+                    <i class="fa-brands fa-typescript" title="TypeScript"></i>
+                </div>
+            </div>
         </div>
-        <div class="project-box"  data-url="https://github.com/Smiltent/sitev2">
-            <img src="/public/img/final.png">
-            <h2><i class="fa-brands fa-typescript"></i> smilt.dev</h2>
-            <p id="desc">My personal portfolio page & this website</p>
+        <div class="project-box project-box-light" data-url="https://github.com/Smiltent/sitev2" style="background-image: url('/public/img/projects/site/bg.png')">
+            <img class="project-txt" src="/public/img/projects/site/txt.svg" alt="smilt.dev">
+            <div class="project-info">
+                <p class="project-desc">Personal Portfolio</p>
+                <div class="project-langs">
+                    <i class="fa-brands fa-typescript" title="TypeScript"></i>
+                </div>
+            </div>
         </div>
-        <div class="project-box" data-url="https://github.com/Smiltent/quackatime">
-            <img src="https://opengraph.githubassets.com/1/Smiltent/quackatime">
-            <h2><i class="fa-brands fa-typescript"></i> Quackatime</h2>
-            <p id="desc">an Alternative to Hackatime & Wakatime for tracking coding data</p>
+        <div class="project-box" data-url="https://git.smilt.dev/quack/quackatime" style="background-image: url('/public/img/projects/quackatime/bg.png')">
+            <img class="project-txt" src="/public/img/projects/quackatime/txt.svg" alt="edu">
+            <div class="project-info">
+                <p class="project-desc">a WakaTime-compatible backend for coding statistics that Quacks</p>
+                <div class="project-langs">
+                    <i class="fa-brands fa-typescript" title="TypeScript"></i>
+                </div>
+            </div>
         </div>
-        <div class="project-box" data-url="https://github.com/Smiltent/ts">
-            <img src="https://opengraph.githubassets.com/1/Smiltent/ts">
-            <h2><i class="fa-brands fa-typescript"></i> #ts</h2>
-            <p id="desc">a Whiteboard app ment for the #ts v2 Hackclub YSWS</p>
+        <div class="project-box project-box-wip" data-url="https://git.smilt.dev/smil/quackshare">
+            <div class="project-wip-tape warning-tape"></div>
+            <img class="project-txt" src="/public/img/projects/quackshare/txt.svg" alt="quackshare">
+            <div class="project-info">
+                <p class="project-desc"><b>[WIP]</b> a self-hostable S3 file sharing service that Quacks</p>
+                <div class="project-langs">
+                    <i class="fa-brands fa-typescript" title="TypeScript"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>

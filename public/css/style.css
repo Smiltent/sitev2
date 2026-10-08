@@ -490,36 +490,105 @@ code {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
     grid-auto-flow: row;
-    gap: 5px;
+    gap: 10px;
 }
 
 .main .project-list .project-box {
-    background-color: var(--overlay);
-    padding: 10px;
-    border-radius: 5px;
-
+    position: relative;
+    border-radius: 8px;
     cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.main .project-list .project-box img {
-    width: calc(100% + 20px);
-    margin: -10px -10px 10px -10px;
-    object-fit: cover;
-    border-radius: 5px 5px 0 0;
+.main .project-list .project-box .project-txt {
+    height: 20%;
+    width: auto;
+    max-width: 80%;
+    transition: transform 0.25s ease;
+}
 
-    height: auto;
-    display: block;
+.main .project-list .project-box:hover .project-txt {
+    transform: scale(1.08);
+}
+
+.main .project-list .project-box .project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 12px;
+}
+
+.main .project-list .project-box .project-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin: 0;
+    max-width: 70%;
+}
+
+.main .project-list .project-box .project-langs {
+    display: flex;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+}
+
+.main .project-list .project-box-light .project-info {
+    background: none;
+}
+
+.main .project-list .project-box.project-box-light .project-txt {
+    height: 20%;
+    width: auto;
+    max-width: 80%;
+}
+
+.main .project-list .project-box.project-box-light .project-desc {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.main .project-list .project-box.project-box-light .project-langs {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.main .project-list .project-box.project-box-wip {
+    background: var(--mantle);
+    cursor: default;
+}
+
+.main .project-list .project-box-wip .project-wip-tape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 141%;
+    height: 24px;
+    transform-origin: top left;
+    transform: rotate(29.36deg);
+    z-index: 1;
+}
+
+.main .project-list .project-box-wip .project-txt {
+    position: relative;
+    z-index: 0;
 }
 
 .main .project-list a {
     text-decoration: none;
     color: #000
 }
-
-
-/* .main .project-list .project-box h1 {
-    font-size: 18px;
-} */
 
 /*         */
 /** tools **/
