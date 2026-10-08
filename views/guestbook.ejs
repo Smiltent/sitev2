@@ -8,7 +8,7 @@
             <input type="hidden" name="_csrf" value="<%= csrf %>">
 
             <input type="text" maxlength="32" name="name" required placeholder="username">
-            <input type="text" maxlength="128" name="website" placeholder="website (optional)">
+
             <textarea maxlength="500" name="msg" placeholder="message"></textarea>
 
             <p id="error" data-type="<%= type %>"><%= text %></p>
@@ -17,16 +17,30 @@
         </form>
     </div>
     <div class="gb-right">
-        <% entries.forEach(e => { %>
+        <% entries.forEach(e => {
+            const now = new Date();
+            const diff = now - e.createdAt;
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            const months = Math.floor(days / 30);
+            const years = Math.floor(days / 365);
+            let ago;
+            if (seconds < 60) ago = seconds + "s ago";
+            else if (minutes < 60) ago = minutes + "m ago";
+            else if (hours < 24) ago = hours + "h ago";
+            else if (days < 30) ago = days + "d ago";
+            else if (months < 12) ago = months + "mo ago";
+            else ago = years + "y ago";
+            const d = e.createdAt;
+            const monthNames = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+            const exact = d.getDate() + " " + monthNames[d.getMonth()] + " " + d.getFullYear() + " | " + String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0");
+        %>
             <div class="gb-entry">
-                <% if (e.website) { %>
-                    <a id="name" href="<%= e.website %>" target="_blank" rel="noopener nofollow"><%= e.name %> (<%= e.website %>)</a>
-                <% } else { %>
-                    <p id="name"><%= e.name %></p>
-                <% } %>
-
+                <p id="name"><%= e.name %></p>
                 <p id="msg"><%= e.msg %></p>
-                <p id="date"><%= e.createdAt.toLocaleString("en-LV", { timeZoneName: "short" }) %></p>
+                <p id="date" title="<%= exact %>"><%= ago %></p>
             </div>
         <% }) %>
     </div>

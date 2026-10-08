@@ -9,9 +9,43 @@ export interface Post {
     description: string
     date: string
     time: string
+    image: string | null
     html: string
     hidden: boolean
     meta: Record<string, string>
+}
+
+export function timeAgo(dateStr: string, timeStr: string): string {
+    const parts = dateStr.split(".").map(Number)
+    const timeParts = timeStr.split(":").map(Number)
+    const day = parts[0] ?? 0
+    const month = parts[1] ?? 0
+    const year = parts[2] ?? 0
+    const hours = timeParts[0] ?? 0
+    const minutes = timeParts[1] ?? 0
+    const posted = new Date(year, month - 1, day, hours, minutes)
+    const now = new Date()
+    const seconds = Math.floor((now.getTime() - posted.getTime()) / 1000)
+
+    if (seconds < 0) return "just now"
+
+    const intervals: [number, string][] = [
+        [31536000, "year"],
+        [2592000, "month"],
+        [604800, "week"],
+        [86400, "day"],
+        [3600, "hour"],
+        [60, "minute"],
+    ]
+
+    for (const [secs, label] of intervals) {
+        const count = Math.floor(seconds / secs)
+        if (count >= 1) {
+            return `${count} ${label}${count > 1 ? "s" : ""} ago`
+        }
+    }
+
+    return "just now"
 }
 
 const dir = path.join(process.cwd(), "blog")
@@ -46,6 +80,7 @@ function parse(filename: string): Post | null {
         description,
         date,
         time,
+        image: meta["image"] || null,
         html: marked.parse(content, { async: false }),
         hidden: meta["hidden"] === "true",
         meta

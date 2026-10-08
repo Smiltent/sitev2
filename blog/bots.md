@@ -3,6 +3,7 @@ title: Bots System on this Website
 description: Why are there "ips banned" on the left side bar? What does it mean?
 date: 11.07.2026
 time: 19:00
+image: /public/img/blog/robots.png
 hidden: false
 ---
 

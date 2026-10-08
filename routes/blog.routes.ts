@@ -1,12 +1,12 @@
 
-import { getPost, getPosts } from "@/utils/blog"
+import { getPost, getPosts, timeAgo } from "@/utils/blog"
 import spaRender from "@/utils/spa"
 
 import { Router } from "express"
 const router = Router()
 
 router.get("/", async (req, res) => {
-    spaRender(req, res, "blog/index", "Blog", { posts: getPosts() })
+    spaRender(req, res, "blog/index", "Blog", { posts: getPosts(), timeAgo })
 })
 
 router.get("/:slug", async (req, res) => {
@@ -15,7 +15,7 @@ router.get("/:slug", async (req, res) => {
     const post = getPost(slug)
     if (!post) return res.status(404).render("404")
 
-    spaRender(req, res, "blog/view", post.title, { post })
+    spaRender(req, res, "blog/view", post.title, { post, timeAgo })
 })
 
 export default router

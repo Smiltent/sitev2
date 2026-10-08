@@ -14,7 +14,7 @@
     </div>
 
     <div id="footer">
-        <p>posted on <%= post.date %> @ <%= post.time %></p>
+        <p>posted <%= timeAgo(post.date, post.time) %></p>
         <p>written by smil</p>
     </div>
 </div>

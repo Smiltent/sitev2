@@ -450,11 +450,39 @@ code {
     color: var(--base)
 }
 
-.main .blog-list .blog-box > * {
-    padding-left: 5px;
+.main .blog-list .blog-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
-.main .blog-list .blog-box h1 {
+.main .blog-list .blog-box a {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+}
+
+.main .blog-list .blog-box-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: linear-gradient(to right, transparent, black);
+    mask-image: linear-gradient(to right, transparent, black);
+    pointer-events: none;
+}
+
+.main .blog-list .blog-box-content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.main .blog-list .blog-box-content h1 {
     font-size: 18px;
 }
 

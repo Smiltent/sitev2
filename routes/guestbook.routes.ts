@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", submitLimit, verifyCsrf, async (req, res) => {
-    const website = String(req.body?.website ?? "").trim()
     const name = String(req.body?.name ?? "").trim()
     const msg = String(req.body?.msg ?? "").trim()
 
@@ -29,14 +28,10 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
         return spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "bad", "text": "Message can only be 500 characters long!" })
     }
 
-    const normalized = /^https?:\/\//i.test(website) ? website : `https://${website}`
-    const safeSite = website && normalized.length <= 128 ? normalized : ""
-
     try {
         await Guestbook.create({
             name,
             msg,
-            website: safeSite,
             approved: false
         })
     } catch {

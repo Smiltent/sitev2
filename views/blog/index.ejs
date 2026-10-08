@@ -1,15 +1,18 @@
 
 <%- include ("../components/$headerNav.ejs") %>
 
-<div class="blog-list">
-    <h1>blog listings</h1>
-    
+<div class="blog-list">    
     <% for (const p of posts) { %>
         <div class="blog-box">
             <a href="/blog/<%= p.slug %>">
-                <h1><%= p.title %> </h1>
-                <p id="desc"><%= p.description %></p>
-                <p id="date"><%= p.date %> - <%= p.time %></p>
+                <% if (p.image) { %>
+                    <div class="blog-box-image" style="background-image: url('<%= p.image %>')"></div>
+                <% } %>
+                <div class="blog-box-content">
+                    <h1><%= p.title %></h1>
+                    <p id="desc"><%= p.description %></p>
+                    <p id="date"><%= timeAgo(p.date, p.time) %></p>
+                </div>
             </a>
         </div>
     <% } %>

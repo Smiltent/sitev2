@@ -3,6 +3,7 @@ title: Test
 description: Test Blog Post
 date: 11.07.2026
 time: 18:00
+image:
 hidden: true
 ---
 
