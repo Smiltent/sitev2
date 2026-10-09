@@ -594,7 +594,6 @@ code {
 
 .main .project-list .project-box.project-box-wip {
     background: var(--mantle);
-    cursor: default;
 }
 
 .main .project-list .project-box-wip .project-wip-tape {
