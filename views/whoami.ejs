@@ -1,24 +1,89 @@
 
 <%- include ("components/$headerNav.ejs") %>
 
-<div class="about-me">
-    <h1>Who am i?</h1>
-    <p>Hello! My name is Smil! I am a human being that is <span id="birth">18</span> years old!</p>
-    <p>I started coding around 2018-2019, back then I knew absolutely nothing, but wanted to become a Developer!</p>
-    <p>Started off with <b>Node.js</b> & <b>Express</b>, moved to <b>Typescript</b>, learned <b>Laravel</b> and <b>C++</b> during school</p>
-    <br>
+<div class="wiki">
+    <div class="wiki-header">
+        <h1 class="wiki-title">Smil</h1>
+    </div>
 
-    <p><b>Fun fact</b>: My username originates from the Latvian City <a target="_blank" href="https://en.wikipedia.org/wiki/Smiltene">Smiltene</a>!</p>
+    <div class="wiki-content">
+        <div class="wiki-infobox">
+            <div class="wiki-infobox-header">Smil</div>
+            <div class="wiki-infobox-image">
+                <img src="/public/img/pfp.png" alt="Smil">
+                <div class="wiki-infobox-caption">Smil in 2022</div>
+            </div>
+            <table class="wiki-infobox-table">
+                <tr>
+                    <th>Nationality</th>
+                    <td>Latvian</td>
+                </tr>
+                <tr>
+                    <th>Occupation</th>
+                    <td>Student</td>
+                </tr>
+                <tr>
+                    <th>Known for</th>
+                    <td>Building things that Quack</td>
+                </tr>
+                <tr>
+                    <th>Active since</th>
+                    <td>2018 - present</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td><span id="birth">18</span></td>
+                </tr>
+            </table>
+            <!-- <div class="wiki-infobox-section-header">Technologies</div>
+            <table class="wiki-infobox-table">
+                <tr>
+                    <th>Languages</th>
+                    <td>TypeScript, JavaScript, PHP, C++, Java, Kotlin</td>
+                </tr>
+                <tr>
+                    <th>Frameworks</th>
+                    <td>Node.js, Express, Laravel</td>
+                </tr>
+                <tr>
+                    <th>Databases</th>
+                    <td>MongoDB, MySQL, Redis</td>
+                </tr>
+                <tr>
+                    <th>Tools</th>
+                    <td>VS Code, IntelliJ IDEA, Docker, Git, Cloudflare</td>
+                </tr>
+            </table> -->
+        </div>
 
-    <h2 style="padding-top: 1rem">Technologies</h2>
-    <img src="https://skillicons.dev/icons?i=js,ts,nodejs,php,laravel,cpp,java,kotlin,mongodb,mysql,redis" alt="Skill icons, showing JavaScript, TypeScript, Node.js, PHP, Laravel, C++, Java, Kotlin, MongoDB, MySQ and Redis">
+        <p><b>Smil</b> (also known as <b>Smiltene</b> or <b>Smilt</b>) is a Latvian developer. The username originates from the city of <a target="_blank" href="https://en.wikipedia.org/wiki/Smiltene">Smiltene</a>, Latvia.</p>
 
-    <h2 style="padding-top: 1rem">Software & Tools</h2>
-    <img src="https://skillicons.dev/icons?i=vscode,idea,cloudflare,git,docker," alt="Skill icons, showing Visual Studio Code, Intellij Idea, Cloudflare, Git and Docker">
+        <h2 id="early-life"><span>Early life and career</span></h2>
+        <hr class="wiki-hr">
 
-    <h2 style="padding-top: 1rem">Contact</h2>
-    <ul>
-        <li>Email - <a href="mailto:<%= email %>"><%= email %></a></li>
-        <li>Discord - @smiltene</li>
-    </ul>
+        <p>Smil began programming around 2018-2019. Initially knowing nothing about development, the aspiring developer started with <b>Node.js</b> and <b>Express</b>, eventually transitioning to <b>TypeScript</b>.</p>
+        <p>During formal education, Smil expanded into <b>Laravel</b> and <b>C++</b>, broadening the range of technologies and paradigms in the developer's toolkit.</p>
+
+        <h2 id="technologies"><span>Technologies</span></h2>
+        <hr class="wiki-hr">
+
+        <h3>Languages & Frameworks</h3>
+        <p>
+            <img src="https://skillicons.dev/icons?i=js,ts,nodejs,php,laravel,java,kotlin,mongodb,mysql,redis" alt="Skill icons, showing JavaScript, TypeScript, Node.js, PHP, Laravel, C++, Java, Kotlin, MongoDB, MySQL and Redis">
+        </p>
+
+        <h3>Software & Tools</h3>
+        <p>
+            <img src="https://skillicons.dev/icons?i=vscode,idea,cloudflare,git,docker" alt="Skill icons, showing Visual Studio Code, IntelliJ IDEA, Cloudflare, Git and Docker">
+        </p>
+
+        <h2 id="contact"><span>Contact</span></h2>
+        <hr class="wiki-hr">
+
+        <ul class="wiki-list">
+            <li><a href="mailto:<%= email %>"><%= email %></a></li>
+            <li><a href="https://discord.com/users/336539227456012298">@smiltene</a> on Discord</li>
+            <li>Through this site's GuestBooks</li>
+        </ul>
+    </div>
 </div>
