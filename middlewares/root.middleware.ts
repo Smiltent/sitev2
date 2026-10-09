@@ -1,8 +1,8 @@
 
 import type { NextFunction, Request, Response } from "express"
-import getCounts from "@/utils/data"
-import getRealIP from "../utils/ip"
-import Bots from "../models/Bots"
+import getCounts from "@/utils/data.ts"
+import getRealIP from "@/utils/ip.ts"
+import Bots from "@/models/Bots.ts"
 
 // handles blocking bots (on the frontend) and logging requests (only if the server has debug enabled)
 export default async function root(req: Request, res: Response, next: NextFunction) {

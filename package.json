@@ -1,17 +1,10 @@
 {
-  "name": "sitev2",
-  "module": "index.ts",
+  "name": "site",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch index.ts --debug",
-    "start": "bun index.ts"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
+    "dev": "deno run -A --env --watch index.ts",
+    "start": "deno run -A --env index.ts"
   },
   "dependencies": {
     "@types/express": "^5.0.6",
@@ -19,6 +12,7 @@
     "@types/ws": "^8.18.1",
     "chalk": "^5.6.2",
     "ejs": "^5.0.1",
+    "esbuild": "^0.25.0",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
     "marked": "^18.0.6",

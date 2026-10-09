@@ -6,6 +6,7 @@ export function initPersistant() {
     initSparkle()
     init88x31()
     initHoneypot()
+    initWhoamiHint()
 }
 
 // spotify url
@@ -113,6 +114,42 @@ function init88x31() {
 // honeypot
 function initHoneypot() {
     document.querySelectorAll("#___DO_NOT_CLICK___YOU_WILL_BE_BANNED")?.forEach(e => e.remove())
+}
+
+// whoami hint pointer
+function initWhoamiHint() {
+    if (localStorage.getItem("hasNavigated")) return
+
+    let hintShown = false
+
+    const timer = setTimeout(() => {
+        const whoamiBtn = document.querySelector<HTMLAnchorElement>('.m-r-nav > a[href="/whoami"]')
+        if (!whoamiBtn) return
+
+        const icon = document.createElement("i")
+        icon.className = "fa-solid fa-hand-pointer whoami-hint"
+        whoamiBtn.appendChild(icon)
+        hintShown = true
+    }, 5000)
+
+    function dismissHint() {
+        clearTimeout(timer)
+        localStorage.setItem("hasNavigated", "1")
+
+        if (hintShown) {
+            const hint = document.querySelector(".whoami-hint")
+            if (hint) hint.remove()
+        }
+    }
+
+    document.addEventListener("click", (e: MouseEvent) => {
+        const anchor = (e.target as HTMLElement).closest("a") as HTMLAnchorElement
+        if (!anchor) return
+        if (anchor.origin !== location.origin) return
+        if (anchor.pathname.startsWith("/public")) return
+
+        dismissHint()
+    }, { once: true })
 }
 
 export function mountView(path: string): (() => void) | void {

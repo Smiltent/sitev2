@@ -1,17 +1,17 @@
 
-import rootMiddleware from "@/middlewares/root.middleware"
-import guestbookRoute from "@/routes/guestbook.routes"
+import rootMiddleware from "@/middlewares/root.middleware.ts"
+import guestbookRoute from "@/routes/guestbook.routes.ts"
 import expressLayouts from "express-ejs-layouts"
-import adminRoute from "@/routes/admin.routes"
-import toolRoute from "@/routes/tool.routes"
-import rootRoute from "@/routes/root.routes"
-import blogRoute from "@/routes/blog.routes"
-import LiveData from "@/src/LiveData"
-import getGitInfo from "@/utils/git"
-import { csrf } from '@/utils/csrf'
+import adminRoute from "@/routes/admin.routes.ts"
+import toolRoute from "@/routes/tool.routes.ts"
+import rootRoute from "@/routes/root.routes.ts"
+import blogRoute from "@/routes/blog.routes.ts"
+import LiveData from "@/src/LiveData.ts"
+import getGitInfo from "@/utils/git.ts"
+import { csrf } from '@/utils/csrf.ts'
+import spaRender from "@/utils/spa.ts"
 import express from "express"
-import path from "path"
-import spaRender from "@/utils/spa"
+import path from "node:path"
 
 export default class Express {
     private app: express.Express
@@ -61,7 +61,7 @@ export default class Express {
         const isDev = process.env.NODE_DEV === "dev"
         this.app.use(
             '/public',
-            express.static(path.join(__dirname, '..', 'public'), {
+            express.static(path.join(import.meta.dirname, '..', 'public'), {
                 etag: !isDev,
                 lastModified: !isDev,
                 maxAge: isDev ? 0 : '10s',

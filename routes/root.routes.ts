@@ -1,7 +1,7 @@
 
-import spaRender from "@/utils/spa"
-import getRealIP from "@/utils/ip"
-import Bots from "@/models/Bots"
+import spaRender from "@/utils/spa.ts"
+import getRealIP from "@/utils/ip.ts"
+import Bots from "@/models/Bots.ts"
 
 import { Router } from "express"
 import path from "path"

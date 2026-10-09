@@ -1,8 +1,8 @@
 
 import type { Request, Response, NextFunction } from "express"
-import { getCookie } from "@/utils/cookie"
-import { safeEqual } from "@/utils/equal"
-import crypto from "crypto"
+import { getCookie } from "@/utils/cookie.ts"
+import { safeEqual } from "@/utils/equal.ts"
+import crypto from "node:crypto"
 
 export function csrf(req: Request, res: Response, next: NextFunction) {
     let token = getCookie(req, "csrf")

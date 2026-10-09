@@ -1,7 +1,7 @@
 
 import { marked, type Tokens } from "marked"
-import path from "path"
-import fs from "fs"
+import path from "node:path"
+import fs from "node:fs"
 
 export interface Post {
     slug: string

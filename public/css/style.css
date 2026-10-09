@@ -155,6 +155,23 @@ code {
 .header-nav > *:nth-child(5) { background-color: var(--blue); }
 .header-nav > *:nth-child(6) { background-color: var(--sky); }
 
+.m-r-nav > a {
+    position: relative;
+}
+
+.whoami-hint {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    font-size: 1.2rem;
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(0.9); }
+    50% { transform: scale(1); }
+}
+
 /* boxes */
 .box {
     border-radius: 5px;

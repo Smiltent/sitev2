@@ -1,5 +1,5 @@
 
-import { timingSafeEqual } from "crypto"
+import { timingSafeEqual } from "node:crypto"
 
 export function safeEqual(a: string, b: string) {
     const ab = Buffer.from(a)

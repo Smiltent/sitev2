@@ -1,5 +1,5 @@
 
-import spaRender from "@/utils/spa"
+import spaRender from "@/utils/spa.ts"
 
 import { Router } from "express"
 const router = Router()

@@ -1,7 +1,7 @@
 
 
-import { initPersistant, mountView } from "./effects"
-import { initWS, apply } from "@/private/ts/ws"
+import { initPersistant, mountView } from "./effects.ts"
+import { initWS, apply } from "@/private/ts/ws.ts"
 
 const main = () => document.querySelector<HTMLElement>(".main")
 

@@ -1,5 +1,5 @@
 
-import type { LiveState } from "@/src/LiveData"
+import type { LiveState } from "@/src/LiveData.ts"
 
 const sContainer = document.querySelector(".m-l-spotify-container") as HTMLDivElement
 

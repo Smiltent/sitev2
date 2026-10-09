@@ -1,9 +1,9 @@
 
-import { checkPassword, isAdmin, issue, reqAdmin } from "@/utils/auth"
-import Guestbook from "@/models/Guestbook"
-import { verifyCsrf } from "@/utils/csrf"
-import rateLimit from "@/utils/rateLimit"
-import spaRender from "@/utils/spa"
+import { checkPassword, isAdmin, issue, reqAdmin } from "@/utils/auth.ts"
+import Guestbook from "@/models/Guestbook.ts"
+import { verifyCsrf } from "@/utils/csrf.ts"
+import rateLimit from "@/utils/rateLimit.ts"
+import spaRender from "@/utils/spa.ts"
 
 import { Router } from "express"
 const router = Router()

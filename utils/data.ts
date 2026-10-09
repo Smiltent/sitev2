@@ -1,7 +1,7 @@
 
-import Guestbook from "@/models/Guestbook"
-import { postCount } from "@/utils/blog"
-import Bots from "@/models/Bots"
+import Guestbook from "@/models/Guestbook.ts"
+import { postCount } from "@/utils/blog.ts"
+import Bots from "@/models/Bots.ts"
 
 export interface Counts {
     posts: number

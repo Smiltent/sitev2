@@ -1,8 +1,8 @@
 
 import type { NextFunction, Request, Response } from "express"
-import { getCookie } from "@/utils/cookie"
-import { safeEqual } from "@/utils/equal"
-import { createHmac } from "crypto"
+import { getCookie } from "@/utils/cookie.ts"
+import { safeEqual } from "@/utils/equal.ts"
+import { createHmac } from "node:crypto"
 
 function sign(expiry: number) {
     const sig = createHmac("sha256", process.env.KEY_SIGNING!).update(String(expiry)).digest("hex")

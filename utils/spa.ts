@@ -1,8 +1,8 @@
-import type { Request, Response } from "express";
+import type { Request, Response } from "express"
 
 const site = "smil's site"
 
-export default function spaRender(req: Request, res: Response, view: string, title: string, data: Record<string, unknown> = {}, status: number = 200) {
+export default function spaRender(_req: Request, res: Response, view: string, title: string, data: Record<string, unknown> = {}, status: number = 200) {
     const full = title ? `${title} - ${site}` : site
     res.locals.title = full
 

@@ -1,6 +1,6 @@
 
-import { getPost, getPosts, timeAgo } from "@/utils/blog"
-import spaRender from "@/utils/spa"
+import { getPost, getPosts, timeAgo } from "@/utils/blog.ts"
+import spaRender from "@/utils/spa.ts"
 
 import { Router } from "express"
 const router = Router()

@@ -1,6 +1,6 @@
 
 import type { NextFunction, Request, Response } from "express"
-import getRealIP from "./ip"
+import getRealIP from "@/utils/ip.ts"
 
 export default function rateLimit(windowMs: number, max: number) {
     const hits = new Map<string, number[]>()
