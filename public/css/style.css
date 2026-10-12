@@ -1136,7 +1136,7 @@ code {
         margin: 0 0 1rem 0;
     }
 
-    .project-list {
-        grid-template-columns: 1fr  ;
+    .main .project-list {
+        grid-template-columns: 1fr;
     }
 }
