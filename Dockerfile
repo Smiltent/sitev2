@@ -1,5 +1,5 @@
 
-FROM denoland/deno:2.9.8
+FROM denoland/deno:2.9.7
 
 WORKDIR /app
 COPY deno.json deno.lock* ./
