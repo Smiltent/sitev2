@@ -1,4 +1,3 @@
-
 import { loadPosts } from "./utils/blog.ts"
 import Express from "@/src/Express.ts"
 import Mongo from "@/src/Mongo.ts"
@@ -8,6 +7,7 @@ import path from "node:path"
 import fs from "node:fs"
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// hi its smil, uh, im doing this specific message/commit, as my forgejo instance pretty pls yelled at me and i hate it ;-;
 import log from './utils/log.ts'
 log(process.env.NODE_ENV === "dev")
 
