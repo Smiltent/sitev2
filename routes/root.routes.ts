@@ -22,7 +22,7 @@ router.get("/projects", (req, res) => {
 
 router.get("/robots.txt", (req, res) => {
     res.type("text/plain")
-    res.sendFile(path.join(__dirname, "..", "public", "robots.txt"))
+    res.sendFile(path.join(import.meta.dirname, "..", "public", "robots.txt"))
 })
 
 router.get("/_admin/env/index.html", async (req, res) => {
