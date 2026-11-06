@@ -30,6 +30,11 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
     }
 
     try {
+        const dupe = await Guestbook.exists({ name, msg, approved: false })
+        if (dupe) {
+            return spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "good", "text": "Thanks! Your entry has been submitted and is awaiting approval." })
+        }
+
         await Guestbook.create({
             name,
             msg,
