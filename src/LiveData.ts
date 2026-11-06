@@ -33,7 +33,6 @@ export default class LiveData {
     }
 
     private async refresh() {
-        // skip this tick if the previous one is still waiting on a hung API
         if (this.refreshing) return
         this.refreshing = true
 
@@ -96,8 +95,9 @@ export default class LiveData {
     private async coding() {
         const headers = { Authorization: `Bearer ${process.env.HACKATIME_API_KEY}` }
 
+        const hackatimeUser = process.env.HACKATIME_USERNAME ?? process.env.HACKATIME_USER
         const [allRes, todayRes] = await Promise.all([
-            fetch(`https://hackatime.hackclub.com/api/v1/users/${process.env.HACKATIME_USERNAME}/stats`),
+            fetch(`https://hackatime.hackclub.com/api/v1/users/${hackatimeUser}/stats`),
             fetch("https://hackatime.hackclub.com/api/hackatime/v1/users/current/statusbar/today", { headers })
         ])
 
