@@ -953,6 +953,10 @@ code {
     color: var(--text)
 }
 
+cap-widget {
+    margin: 10px auto;
+}
+
 /* admin login */
 .admin-login {
     text-align: center;
