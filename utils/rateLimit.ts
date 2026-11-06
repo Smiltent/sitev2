@@ -19,8 +19,7 @@ export default function rateLimit(windowMs: number, max: number) {
     }, windowMs).unref?.()
 
     return (req: Request, res: Response, next: NextFunction) => {
-        const ipraw = getRealIP(req) 
-        const key = String(Array.isArray(ipraw) ? ipraw[0] : ipraw)
+        const key = getRealIP(req)
 
         const now = Date.now()
         const cut = now - windowMs

@@ -22,8 +22,6 @@ router.get("/login", (req, res) => {
 router.post("/login", verifyCsrf, loginLimit, (req, res) => {
     const pass = String(req.body?.password ?? "")
 
-    console.log(pass)
-
     if (!checkPassword(pass)) {
         console.debug("WRONG PASSWORD (somehow)")
         return spaRender(req, res, "admin/login", "Admin Login", { error: "Incorrect Password" })
@@ -44,11 +42,6 @@ router.get("/dashboard", reqAdmin, async (req, res) => {
 
 router.post("/e/:id/approve", reqAdmin, verifyCsrf, async (req, res) => {
     await Guestbook.findByIdAndUpdate(req.params.id, { approved: true }).catch(() => null)
-    res.redirect("/admin/dashboard")
-}) 
-
-router.post("/e/:id/deny", reqAdmin, verifyCsrf, async (req, res) => {
-    await Guestbook.findByIdAndDelete(req.params.id).catch(() => null)
     res.redirect("/admin/dashboard")
 }) 
 

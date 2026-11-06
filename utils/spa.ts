@@ -11,6 +11,7 @@ export default function spaRender(_req: Request, res: Response, view: string, ti
     if (res.locals.spa) {
         res.set("Cache-Control", "no-store")
         res.set("X-Title", full)
+        res.status(status)
         return res.render(view, { ...data, layout: false })
     }
 

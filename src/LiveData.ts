@@ -19,6 +19,7 @@ export interface LiveState {
 export default class LiveData {
     public state: LiveState = { discord: null, spotify: null, coding: null, uptime: null, updatedAt: 0 }
     private wss: WebSocketServer
+    private refreshing = false
 
     constructor(server: Server) {
         this.wss = new WebSocketServer({ server, path: "/ws" })
@@ -32,6 +33,10 @@ export default class LiveData {
     }
 
     private async refresh() {
+        // skip this tick if the previous one is still waiting on a hung API
+        if (this.refreshing) return
+        this.refreshing = true
+
         const [discord, coding, uptime] = await Promise.allSettled([
             this.discSpot(),
             this.coding(),
@@ -52,6 +57,7 @@ export default class LiveData {
         }
 
         this.state.updatedAt = Date.now()
+        this.refreshing = false
         this.broadcast()
     }
 
@@ -91,7 +97,7 @@ export default class LiveData {
         const headers = { Authorization: `Bearer ${process.env.HACKATIME_API_KEY}` }
 
         const [allRes, todayRes] = await Promise.all([
-            fetch(`https://hackatime.hackclub.com/api/v1/users/${process.env.HACKATIME_USER}/stats`),
+            fetch(`https://hackatime.hackclub.com/api/v1/users/${process.env.HACKATIME_USERNAME}/stats`),
             fetch("https://hackatime.hackclub.com/api/hackatime/v1/users/current/statusbar/today", { headers })
         ])
 

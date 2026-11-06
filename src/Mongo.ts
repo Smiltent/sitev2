@@ -18,7 +18,7 @@ export default class Database {
             console.info("Connected to Database!")
         } catch (err) {
             console.error("Failed to connect to Database, exiting...")
-            process.exit(0)
+            process.exit(1)
         }
     }
 }

@@ -38,6 +38,6 @@ async function main() {
     const db = new Mongo()
     await db.ready
 
-    new Express()
+    new Express(process.env.PORT ?? 3000)
 }
 main()

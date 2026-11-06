@@ -27,13 +27,12 @@ router.get("/robots.txt", (req, res) => {
 
 router.get("/_admin/env/index.html", async (req, res) => {
     const ip = getRealIP(req)
-    const normalized = Array.isArray(ip) ? ip[0] : ip
 
     if (await Bots.findOne({ ip })) return res.send("If you've accessed this page, this means your IP address is whitelisted!")
     if (process.env.NODE_ENV === "dev") return res.send("You would of been banned, if the website wasn't under Dev Mode!")
 
     await Bots.create({
-        ip: normalized,
+        ip,
         userAgent: req.headers["user-agent"],
         reason: "Doesn't follow robots.txt"
     })

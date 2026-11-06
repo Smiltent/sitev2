@@ -7,9 +7,11 @@
         <form action="/guestbook" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrf %>">
 
-            <input type="text" maxlength="32" name="name" required placeholder="username">
+            <input type="text" maxlength="32" name="name" placeholder="username (optional)">
 
             <textarea maxlength="500" name="msg" placeholder="message"></textarea>
+
+            <cap-widget data-cap-api-endpoint="https://cap.smilt.dev/fb147619ba/"></cap-widget>
 
             <p id="error" data-type="<%= type %>"><%= text %></p>
 

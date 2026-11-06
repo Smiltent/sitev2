@@ -36,7 +36,7 @@
                             <input type="hidden" name="_csrf" value="<%= csrf %>">
                             <input id="approve" type="submit" value="Approve">
                         </form>
-                        <form action="/admin/e/<%= i._id %>/deny" method="POST">
+                        <form action="/admin/e/<%= i._id %>/delete" method="POST">
                             <input type="hidden" name="_csrf" value="<%= csrf %>">
                             <input id="deny" type="submit" value="Deny">
                         </form>
