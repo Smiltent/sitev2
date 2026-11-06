@@ -898,6 +898,11 @@ code {
     resize: vertical
 }
 
+.gb-left form cap-widget {
+    --cap-border-radius: 5px;
+    --cap-widget-width: 100%;
+}
+
 .gb-right {
     display: flex;
     flex-direction: column;
@@ -951,10 +956,6 @@ code {
 
 .footer p a:active, .footer p a:visited {
     color: var(--text)
-}
-
-cap-widget {
-    margin: 10px auto;
 }
 
 /* admin login */
