@@ -130,7 +130,7 @@ export const getPost = (slug: string) => posts.get(slug) ?? null
 export const getPosts = () => [...posts.values()]
     .filter(p => !p.hidden)
     .sort((a, b) => b.date.localeCompare(a.date))
-export const postCount = () => posts.size
+export const postCount = () => [...posts.values()].filter(p => !p.hidden).length
 
 // hot reload
 let debounce: ReturnType<typeof setTimeout>
