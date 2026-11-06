@@ -2,6 +2,7 @@
 import Guestbook from "@/models/Guestbook.ts"
 import { verifyCsrf } from "@/utils/csrf.ts"
 import rateLimit from "@/utils/rateLimit.ts"
+import notifyGotify from "@/utils/gotify.ts"
 import spaRender from "@/utils/spa.ts"
 
 import { Router } from "express"
@@ -38,6 +39,7 @@ router.post("/", submitLimit, verifyCsrf, async (req, res) => {
         return spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "bad", "text": "Something went wrong!" })
     }
 
+    notifyGotify("New guestbook entry", `${name || "Anonymous"}: ${msg}`)
     spaRender(req, res, "guestbook", "Guestbook", { entries: await getEntries(), type: "good", "text": "Thanks! Your entry has been submitted and is awaiting approval." })
 })
 
