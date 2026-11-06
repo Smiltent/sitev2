@@ -8,7 +8,7 @@ import spaRender from "@/utils/spa.ts"
 import { Router } from "express"
 const router = Router()
 
-const submitLimit = rateLimit(60 * 1000, 1)
+const submitLimit = rateLimit(5 * 60 * 1000, 5)
 
 async function getEntries() {
     return await Guestbook.find({ approved: true })
