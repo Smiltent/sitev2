@@ -127,9 +127,15 @@ export function loadPosts() {
 }
 
 export const getPost = (slug: string) => posts.get(slug) ?? null
+const toTime = (p: Post) => {
+    const [d, m, y] = p.date.split(".").map(Number)
+    const [h, min] = p.time.split(":").map(Number)
+    return new Date(y ?? 0, (m ?? 1) - 1, d ?? 1, h ?? 0, min ?? 0).getTime()
+}
+
 export const getPosts = () => [...posts.values()]
     .filter(p => !p.hidden)
-    .sort((a, b) => b.date.localeCompare(a.date))
+    .sort((a, b) => toTime(b) - toTime(a))
 export const postCount = () => [...posts.values()].filter(p => !p.hidden).length
 
 // hot reload
