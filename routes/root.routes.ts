@@ -63,7 +63,7 @@ router.post("/__captcha", verifyCsrf, async (req, res) => {
         notifyBan(ip, userAgent)
     }
 
-    res.status(403).send(`captcha failed, you've been banned! Email ${process.env.EMAIL} for an unblock or join the Discord - ${process.env.DISCORD_URL}`)
+    res.status(403).send(`captcha failed, you've been banned! email ${process.env.EMAIL} for an unblock or join the Discord - ${process.env.DISCORD_URL}`)
 })
 
 export default router
