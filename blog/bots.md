@@ -15,7 +15,10 @@ At the top of every page on [this website](https://smilt.dev), there is a redire
 You, cannot see it as you are looking at it with the colors and design that I've made.  
 
 But a bot doesn't see all of that, all it sees: *"Oh! There's a link, gotta go scrape it!"*.  
-When it does, the bot gets banned, only leaving a message which lets them contact me, which, I don't think has the ability to do that.
+~~When it does, the bot gets banned,~~ only leaving a message which lets them contact me, which, I don't think has the ability to do that.
+
+As of November 14th, the bots are given a Captcha, which they have to do in 1 minute. Otherwise - they get banned.  
+Not only the hidden URL for non-JavaScript bots, I have also blocked common routes which they try and access.
 
 ## Why can't I see the link in Inspect Element?
 When you load a page, you load it with JavaScript, it removes any element that has the id of `___DO_NOT_CLICK___YOU_WILL_BE_BANNED`!  

@@ -964,6 +964,41 @@ code {
     font-size: 12px;
 }
 
+/*            */
+/** captcha  **/
+/*            */
+.captcha {
+    max-width: 400px;
+    margin: 40px auto;
+
+    padding: 15px;
+    background-color: var(--overlay);
+    border-radius: 5px;
+
+    text-align: center;
+}
+
+.captcha form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.captcha form input[type="submit"] {
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.captcha form cap-widget {
+    display: block;
+    width: 100%;
+    --cap-border-radius: 5px;
+    --cap-widget-width: 100%;
+}
+
 /*          */
 /** footer **/
 /*          */

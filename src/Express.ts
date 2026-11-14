@@ -6,6 +6,7 @@ import adminRoute from "@/routes/admin.routes.ts"
 import toolRoute from "@/routes/tool.routes.ts"
 import rootRoute from "@/routes/root.routes.ts"
 import blogRoute from "@/routes/blog.routes.ts"
+import { fileURLToPath } from "node:url"
 import LiveData from "@/src/LiveData.ts"
 import getGitInfo from "@/utils/git.ts"
 import { csrf } from '@/utils/csrf.ts'
@@ -61,7 +62,7 @@ export default class Express {
         const isDev = process.env.NODE_DEV === "dev"
         this.app.use(
             '/public',
-            express.static(path.join(import.meta.dirname, '..', 'public'), {
+            express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public'), {
                 etag: !isDev,
                 lastModified: !isDev,
                 maxAge: isDev ? 0 : '10s',

@@ -1,0 +1,18 @@
+
+<div class="captcha">
+    <h1>hold up lil one!</h1>
+    <p>you kind of look like a bot... maybe lets do a captcha</p>
+    <form action="/__captcha" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <input type="hidden" name="back" value="<%= back %>">
+
+        <cap-widget data-cap-api-endpoint="<%= capUrl %>/"></cap-widget>
+        <input type="submit" value="i'm human!">
+    </form>
+</div>
+
+<script>
+    document.querySelector(".captcha cap-widget").addEventListener("solve", () => {
+        document.querySelector(".captcha form").submit()
+    })
+</script>

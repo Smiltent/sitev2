@@ -3,34 +3,19 @@ import Guestbook from "@/models/Guestbook.ts"
 import { verifyCsrf } from "@/utils/csrf.ts"
 import rateLimit from "@/utils/rateLimit.ts"
 import notifyGotify from "@/utils/gotify.ts"
+import captchaOk from "@/utils/captcha.ts"
 import spaRender from "@/utils/spa.ts"
 
 import { Router } from "express"
 const router = Router()
 
 const submitLimit = rateLimit(5 * 60 * 1000, 5)
-
 async function getEntries() {
     return await Guestbook.find({ approved: true })
         .sort({ createdAt: -1 })
         .limit(200)
         .lean()
         .catch(() => [])
-}
-
-async function captchaOk(token: string): Promise<boolean> {
-    const url = process.env.CAP_URL
-    const secret = process.env.CAP_SECRET
-    if (!url || !secret || !token) return false
-
-    const res = await fetch(`${url}/siteverify`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ secret, response: token }),
-        signal: AbortSignal.timeout(5000)
-    }).catch(() => null)
-
-    return res?.ok === true && (await res.json().catch(() => null))?.success === true
 }
 
 router.get("/", async (req, res) => {
