@@ -2,6 +2,7 @@
 import { challenge, unchallenge } from "@/middlewares/root.middleware.ts"
 import { verifyCsrf } from "@/utils/csrf.ts"
 import captchaOk from "@/utils/captcha.ts"
+import notifyBan from "@/utils/discord.ts"
 import { fileURLToPath } from "node:url"
 import spaRender from "@/utils/spa.ts"
 import getRealIP from "@/utils/ip.ts"
@@ -21,6 +22,10 @@ router.get("/whoami", (req, res) => {
 
 router.get("/projects", (req, res) => {
     spaRender(req, res, "projects", "Projects")
+})
+
+router.get("/discord", (req, res) => {
+    res.redirect(process.env.DISCORD_URL!)
 })
 
 router.get("/robots.txt", (req, res) => {
@@ -55,9 +60,10 @@ router.post("/__captcha", verifyCsrf, async (req, res) => {
         await Bots.updateOne({ ip }, {
             $set: { whitelisted: false, userAgent, reason: "failed scanner captcha" }
         }, { upsert: true })
+        notifyBan(ip, userAgent)
     }
 
-    res.status(403).send(`Captcha failed, you've been banned! Email ${process.env.EMAIL} for an unblock.`)
+    res.status(403).send(`captcha failed, you've been banned! Email ${process.env.EMAIL} for an unblock or join the Discord - ${process.env.DISCORD_URL}`)
 })
 
 export default router

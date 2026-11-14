@@ -1,6 +1,7 @@
 
 import type { NextFunction, Request, Response } from "express"
 import isScannerPath from "@/utils/scanner.ts"
+import notifyBan from "@/utils/discord.ts"
 import getCounts from "@/utils/data.ts"
 import getRealIP from "@/utils/ip.ts"
 import Bots from "@/models/Bots.ts"
@@ -21,7 +22,7 @@ export default async function root(req: Request, res: Response, next: NextFuncti
 
     if (check) {
         if (!check.whitelisted) {
-            return res.send(`You've been blocked! Email ${process.env.EMAIL} for an unblock.`)
+            return res.send(`you've been blocked! email ${process.env.EMAIL} for an unblock or join the Discord - ${process.env.DISCORD_URL}`)
         }
     } else if (challenged.has(ip)) {
         if (Date.now() - challenged.get(ip)! > CHALLENGE_TTL) {
@@ -29,8 +30,9 @@ export default async function root(req: Request, res: Response, next: NextFuncti
             await Bots.updateOne({ ip }, {
                 $set: { whitelisted: false, userAgent: req.headers["user-agent"] ?? "", reason: "ignored captcha" }
             }, { upsert: true })
+            notifyBan(ip, req.headers["user-agent"] ?? "")
 
-            return res.send(`You've been blocked! Email ${process.env.EMAIL} for an unblock.`)
+            return res.send(`you've been blocked! email ${process.env.EMAIL} for an unblock or join the Discord - ${process.env.DISCORD_URL}`)
         }
 
         if (req.path !== "/__captcha" && !req.path.startsWith("/public")) {
