@@ -38,7 +38,7 @@ export default function notifyBan(ip: string, userAgent: string) {
                 type: 17,
                 accent_color: 0xed4245,
                 components: [
-                    { type: 10, content: `## ${maskIP(ip)}` },
+                    { type: 10, content: `## \`${maskIP(ip)}\`` },
                     { type: 14, spacing: 1, divider: true },
                     { type: 10, content: `**UA:** ${userAgent}\n**AS:** ${as}` }
                 ]
